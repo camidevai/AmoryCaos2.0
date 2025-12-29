@@ -11,10 +11,10 @@
 
 .resources-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-2xl);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
     margin-bottom: var(--spacing-3xl);
-    max-width: 1000px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -188,6 +188,13 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+}
+
 @media (max-width: 768px) {
     .resources-grid {
         grid-template-columns: 1fr;

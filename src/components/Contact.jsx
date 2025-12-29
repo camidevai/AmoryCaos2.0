@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import emailjs from '@emailjs/browser';
-import { FaEnvelope, FaPaperPlane, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { FaEnvelope, FaPaperPlane, FaCheckCircle, FaExclamationCircle, FaTimes } from 'react-icons/fa';
 import './Contact.css';
 
-const Contact = forwardRef((props, ref) => {
+const Contact = forwardRef(({ isOpen, onClose }, ref) => {
   const form = useRef();
   const messageTextarea = useRef();
   const [status, setStatus] = useState({ type: '', message: '' });
@@ -12,43 +12,13 @@ const Contact = forwardRef((props, ref) => {
 
   // Expose methods to parent components
   useImperativeHandle(ref, () => ({
-    scrollToForm: () => {
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-        // Focus on message field after scroll
-        setTimeout(() => {
-          if (messageTextarea.current) {
-            messageTextarea.current.focus();
-          }
-        }, 1000);
-      }
+    openModal: () => {
+      // Modal will be controlled by parent
     },
     fillMessage: (message) => {
       if (messageTextarea.current) {
         messageTextarea.current.value = message;
         messageTextarea.current.focus();
-      }
-    },
-    scrollAndFill: (message) => {
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-        // Fill message and focus after scroll
-        setTimeout(() => {
-          if (messageTextarea.current) {
-            messageTextarea.current.value = message;
-            messageTextarea.current.focus();
-            // Position cursor at the end
-            messageTextarea.current.setSelectionRange(message.length, message.length);
-          }
-        }, 1000);
       }
     }
   }));
@@ -72,6 +42,10 @@ const Contact = forwardRef((props, ref) => {
             message: '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto ✅'
           });
           form.current.reset();
+          setTimeout(() => {
+            onClose();
+            setStatus({ type: '', message: '' });
+          }, 2000);
         },
         (error) => {
           setStatus({
@@ -83,136 +57,134 @@ const Contact = forwardRef((props, ref) => {
       )
       .finally(() => {
         setIsSubmitting(false);
-        setTimeout(() => setStatus({ type: '', message: '' }), 5000);
       });
   };
 
+  if (!isOpen) return null;
+
   return (
-    <section id="contact" className="contact-section section">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-lg"
-        >
-          <FaEnvelope className="contact-icon" />
-          <h2 className="text-center mb-md">
-            💬 <span className="gradient-text">Trabajemos Juntos</span>
-          </h2>
-          <p className="section-subtitle">
-            ¿Listo para llevar esta charla a tu empresa, universidad o evento? ¡Contáctanos hoy!
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="contact-form-wrapper"
-        >
-          <form ref={form} onSubmit={sendEmail} className="contact-form">
-            <div className="form-row">
-              <div className="form-group">
-                <label className="form-label">Nombre del Cliente</label>
-                <input
-                  type="text"
-                  name="from_name"
-                  required
-                  className="form-input"
-                  placeholder="Tu nombre"
-                />
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">Correo Electrónico</label>
-                <input
-                  type="email"
-                  name="reply_to"
-                  required
-                  className="form-input"
-                  placeholder="tu@email.com"
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Empresa/Nombre del Proyecto</label>
-              <input
-                type="text"
-                name="brand_name"
-                required
-                className="form-input"
-                placeholder="Nombre de tu empresa o proyecto"
-              />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Descripción del Proyecto</label>
-              <textarea
-                ref={messageTextarea}
-                name="message"
-                rows="6"
-                required
-                className="form-textarea"
-                placeholder="Cuéntanos sobre tu proyecto, objetivos y cualquier detalle relevante..."
-              ></textarea>
-            </div>
-
-            {status.message && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={`status-message status-${status.type}`}
-              >
-                {status.type === 'success' ? (
-                  <FaCheckCircle className="status-icon" />
-                ) : (
-                  <FaExclamationCircle className="status-icon" />
-                )}
-                <span>{status.message}</span>
-              </motion.div>
-            )}
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="btn btn-primary btn-cta btn-submit"
-            >
-              {isSubmitting ? (
-                <>
-                  <div className="spinner"></div>
-                  Enviando...
-                </>
-              ) : (
-                <>
-                  Enviar Mensaje
-                  <FaPaperPlane />
-                </>
-              )}
-            </button>
-          </form>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="contact-footer"
-        >
-          <p>También puedes contactarnos directamente en:</p>
-          <a
-            href="mailto:camidevai@gmail.com"
-            className="contact-email"
+    <AnimatePresence>
+      {isOpen && (
+        <div className="contact-modal-backdrop" onClick={onClose}>
+          <motion.div
+            className="contact-modal-content"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ duration: 0.3 }}
           >
-            camidevai@gmail.com
-          </a>
-        </motion.div>
-      </div>
-    </section>
+            <div className="contact-modal-header">
+              <div className="contact-modal-title">
+                <FaEnvelope className="contact-icon-small" />
+                <h2>💬 <span className="gradient-text">Trabajemos Juntos</span></h2>
+              </div>
+              <button onClick={onClose} className="contact-modal-close">
+                <FaTimes />
+              </button>
+            </div>
+
+            <div className="contact-modal-body">
+              <p className="contact-modal-subtitle">
+                ¿Listo para llevar esta charla a tu empresa, universidad o evento? ¡Contáctanos hoy!
+              </p>
+
+              <form ref={form} onSubmit={sendEmail} className="contact-form">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">Nombre del Cliente</label>
+                    <input
+                      type="text"
+                      name="from_name"
+                      required
+                      className="form-input"
+                      placeholder="Tu nombre"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Correo Electrónico</label>
+                    <input
+                      type="email"
+                      name="reply_to"
+                      required
+                      className="form-input"
+                      placeholder="tu@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Empresa/Nombre del Proyecto</label>
+                  <input
+                    type="text"
+                    name="brand_name"
+                    required
+                    className="form-input"
+                    placeholder="Nombre de tu empresa o proyecto"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Descripción del Proyecto</label>
+                  <textarea
+                    ref={messageTextarea}
+                    name="message"
+                    rows="6"
+                    required
+                    className="form-textarea"
+                    placeholder="Cuéntanos sobre tu proyecto, objetivos y cualquier detalle relevante..."
+                  ></textarea>
+                </div>
+
+                {status.message && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`status-message status-${status.type}`}
+                  >
+                    {status.type === 'success' ? (
+                      <FaCheckCircle className="status-icon" />
+                    ) : (
+                      <FaExclamationCircle className="status-icon" />
+                    )}
+                    <span>{status.message}</span>
+                  </motion.div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn btn-primary btn-cta btn-submit"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="spinner"></div>
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      Enviar Mensaje
+                      <FaPaperPlane />
+                    </>
+                  )}
+                </button>
+              </form>
+
+              <div className="contact-modal-footer">
+                <p>También puedes contactarnos directamente en:</p>
+                <a
+                  href="mailto:camidevai@gmail.com"
+                  className="contact-email"
+                >
+                  camidevai@gmail.com
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 });
 

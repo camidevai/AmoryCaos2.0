@@ -14,6 +14,7 @@ import './App.css';
 
 function App() {
   const [isVoteMode, setIsVoteMode] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const contactRef = useRef(null);
 
   useEffect(() => {
@@ -26,9 +27,11 @@ function App() {
   }, []);
 
   const handleContactClick = () => {
-    if (contactRef.current) {
-      contactRef.current.scrollToForm();
-    }
+    setIsContactModalOpen(true);
+  };
+
+  const handleCloseContactModal = () => {
+    setIsContactModalOpen(false);
   };
 
   // If in vote mode, render ONLY the voting interface
@@ -71,12 +74,16 @@ function App() {
         {/* Section 7: Resources */}
         <Resources onContactClick={handleContactClick} />
 
-        {/* Section 8: Contact Form */}
-        <Contact ref={contactRef} />
-
-        {/* Section 9: Final CTA */}
+        {/* Section 8: Final CTA */}
         <FinalCTA />
       </main>
+
+      {/* Contact Modal */}
+      <Contact
+        ref={contactRef}
+        isOpen={isContactModalOpen}
+        onClose={handleCloseContactModal}
+      />
     </div>
   );
 }
