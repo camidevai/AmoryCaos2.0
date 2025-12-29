@@ -1,10 +1,22 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { FaQuestionCircle, FaTimes } from 'react-icons/fa';
+import { FaQuestionCircle, FaTimes, FaRedo } from 'react-icons/fa';
+import gameService from '../services/gameService';
 import './FloatingHelp.css';
 
 const FloatingHelp = () => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const handleResetGame = () => {
+        if (window.confirm('¿Estás seguro de que quieres reiniciar el juego? Esto borrará todos los votos.')) {
+            gameService.reset();
+            // Clear all vote records from localStorage
+            for (let i = 0; i < 10; i++) {
+                localStorage.removeItem(`voted_q${i}`);
+            }
+            alert('🎮 Juego reiniciado exitosamente');
+        }
+    };
 
     const faqs = [
         {
@@ -27,7 +39,7 @@ const FloatingHelp = () => {
 
     return (
         <>
-            {/* Floating Button */}
+            {/* Floating Help Button */}
             <motion.button
                 className="floating-help-button"
                 onClick={() => setIsOpen(true)}
@@ -38,6 +50,20 @@ const FloatingHelp = () => {
                 transition={{ delay: 1, duration: 0.5 }}
             >
                 <FaQuestionCircle />
+            </motion.button>
+
+            {/* Floating Reset Button */}
+            <motion.button
+                className="floating-reset-button"
+                onClick={handleResetGame}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+                title="Reiniciar Juego"
+            >
+                <FaRedo />
             </motion.button>
 
             {/* Modal */}

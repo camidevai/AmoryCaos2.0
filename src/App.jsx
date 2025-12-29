@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Hero from './components/Hero';
 import StoryCarouselCami from './components/StoryCarouselCami';
 import StoryBridge from './components/StoryBridge';
@@ -6,6 +6,7 @@ import StoryCarouselDaniel from './components/StoryCarouselDaniel';
 import AIExplanation from './components/AIExplanation';
 import AIHallucination from './components/AIHallucination';
 import Resources from './components/Resources';
+import Contact from './components/Contact';
 import FinalCTA from './components/FinalCTA';
 import FloatingHelp from './components/FloatingHelp';
 import FloatingQR from './components/FloatingQR';
@@ -13,6 +14,7 @@ import './App.css';
 
 function App() {
   const [isVoteMode, setIsVoteMode] = useState(false);
+  const contactRef = useRef(null);
 
   useEffect(() => {
     // Smooth scroll behavior
@@ -22,6 +24,12 @@ function App() {
     const urlParams = new URLSearchParams(window.location.search);
     setIsVoteMode(urlParams.get('mode') === 'vote');
   }, []);
+
+  const handleContactClick = () => {
+    if (contactRef.current) {
+      contactRef.current.scrollToForm();
+    }
+  };
 
   // If in vote mode, render ONLY the voting interface
   if (isVoteMode) {
@@ -61,9 +69,12 @@ function App() {
         <AIHallucination />
 
         {/* Section 7: Resources */}
-        <Resources />
+        <Resources onContactClick={handleContactClick} />
 
-        {/* Section 8: Final CTA */}
+        {/* Section 8: Contact Form */}
+        <Contact ref={contactRef} />
+
+        {/* Section 9: Final CTA */}
         <FinalCTA />
       </main>
     </div>

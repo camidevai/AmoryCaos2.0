@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import { FaRobot, FaInstagram } from 'react-icons/fa';
+import { FaRobot, FaInstagram, FaMicrophone } from 'react-icons/fa';
 import './Resources.css';
 
-const Resources = () => {
+const Resources = ({ onContactClick }) => {
     const resources = [
         {
             icon: <FaRobot />,
@@ -19,6 +19,14 @@ const Resources = () => {
             cta: "Seguir en Instagram",
             url: "https://www.instagram.com/camidevai/",
             color: "warm"
+        },
+        {
+            icon: <FaMicrophone />,
+            title: "Solicita esta Charla",
+            description: "¿Te gustaría que llevemos esta charla a tu empresa, universidad o evento? ¡Contáctanos!",
+            cta: "Contactar con nosotros",
+            isContact: true,
+            color: "primary"
         }
     ];
 
@@ -56,14 +64,23 @@ const Resources = () => {
                             </div>
                             <h3 className="resource-title">{resource.title}</h3>
                             <p className="resource-description">{resource.description}</p>
-                            <a
-                                href={resource.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`btn btn-resource btn-${resource.color}`}
-                            >
-                                {resource.cta}
-                            </a>
+                            {resource.isContact ? (
+                                <button
+                                    onClick={onContactClick}
+                                    className={`btn btn-resource btn-${resource.color}`}
+                                >
+                                    {resource.cta}
+                                </button>
+                            ) : (
+                                <a
+                                    href={resource.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`btn btn-resource btn-${resource.color}`}
+                                >
+                                    {resource.cta}
+                                </a>
+                            )}
                         </motion.div>
                     ))}
                 </div>
