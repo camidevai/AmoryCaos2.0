@@ -1,0 +1,64 @@
+.App {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+}
+
+/* Ensure smooth transitions between sections */
+section {
+  position: relative;
+  width: 100%;
+}
+
+/* Add subtle entrance animations for sections */
+@media (prefers-reduced-motion: no-preference) {
+  section {
+    opacity: 0;
+    animation: sectionFadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes sectionFadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* Vote Mode Only - Full screen voting interface */
+.App.vote-mode-only {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 0;
+  margin: 0;
+}
+
+.App.vote-mode-only section {
+  animation: none;
+  opacity: 1;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+}
+
+/* Accessibility: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

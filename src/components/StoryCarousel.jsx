@@ -1,0 +1,186 @@
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import './StoryCarousel.css';
+
+const StoryCarousel = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const stories = [
+        {
+            year: "2013",
+            title: "¿Hace cuánto no vas al dentista?",
+            emoji: "🗂️🧢🗣️",
+            video: "/historiaJorgeyCami/captandoClientes.mp4"
+        },
+
+        {
+            year: "2013",
+            title: "Mi cartelito salvador",
+            emoji: "📣🪧✨",
+            video: "/historiaJorgeyCami/cartelito.mp4"
+        },
+
+        {
+            "year": "2013",
+            "title": "Y un día… llegó Jorge",
+            "emoji": "🌸💬🍽️",
+            "video": "/historiaJorgeyCami/primerEncuentro.mp4"
+        },
+        {
+            "year": "2017 - 2021",
+            "title": "De promotora a jefa de sucursal",
+            "emoji": "📞📋🧠💼",
+            "video": "/historiaJorgeyCami/jefaSucursal.mp4"
+        },
+        {
+            "year": "2016",
+            "title": "¿Y si pudiera estudiar informática?",
+            "emoji": "💡🧢💻👶",
+            "video": "/historiaJorgeyCami/decisionEstudio.mp4"
+        },
+        {
+            "year": "2018",
+            "title": "Noches de café, código y cariño",
+            "emoji": "☕👨‍👩‍👧‍👦💻🌙",
+            "video": "/historiaJorgeyCami/nochesDeEstudio.mp4"
+        },
+        {
+            "year": "2021",
+            "title": "Mi primera vez en el mundo tech real",
+            "emoji": "💼💻☕📚",
+            "video": "/historiaJorgeyCami/practicaEntityData.mp4"
+        }, {
+            "year": "2022",
+            "title": "Cuando Java me dio miedo",
+            "emoji": "📚🧠😰💻",
+            "video": "/historiaJorgeyCami/desafioJava.mp4"
+        }, {
+            "year": "2022",
+            "title": "Me grababa para explicarme lo que estaba aprendiendo",
+            "emoji": "🎥📱👩‍💻💬",
+            "video": "/historiaJorgeyCami/primerosVideos.mp4"
+        },
+        {
+            "year": "2022",
+            "title": "¡Guau! Tengo 10.000 seguidores",
+            "emoji": "📈🎤📚❤️",
+            "video": "/historiaJorgeyCami/seguidores10k.mp4"
+        }, {
+            "year": "2022",
+            "title": "Lavando loza, descubrí la Inteligencia Artificial",
+            "emoji": "🍽️🎧🤯🤖",
+            "video": "/historiaJorgeyCami/descubrimientoIA.mp4"
+        },
+        {
+            "year": "2023",
+            "title": "Mi primer GPT... y mis rrss explotaron",
+            "emoji": "🧠📱🤖🚀",
+            "video": "/historiaJorgeyCami/primerGPT.mp4"
+        }
+
+    ];
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % stories.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + stories.length) % stories.length);
+    };
+
+    const goToSlide = (index) => {
+        setCurrentSlide(index);
+    };
+
+    return (
+        <section className="story-section section">
+            <div className="container">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <h2 className="text-center mb-lg">
+                        📖 Nuestra <span className="gradient-text">Historia</span>
+                    </h2>
+                    <p className="story-intro text-center">
+                        Un viaje desde la incertidumbre hasta la creación. Esta es nuestra historia real.
+                    </p>
+                </motion.div>
+
+                <div className="carousel-container">
+                    {/* Navigation Arrows */}
+                    <button
+                        className="carousel-arrow carousel-arrow-left"
+                        onClick={prevSlide}
+                        aria-label="Anterior"
+                    >
+                        <FaChevronLeft />
+                    </button>
+
+                    {/* Carousel Content */}
+                    <div className="carousel-content">
+                        <motion.div
+                            key={currentSlide}
+                            initial={{ opacity: 0, x: 100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -100 }}
+                            transition={{ duration: 0.5 }}
+                            className="story-card"
+                        >
+                            {stories[currentSlide].video ? (
+                                <video
+                                    src={stories[currentSlide].video}
+                                    className="story-video"
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                />
+                            ) : (
+                                <div className="story-emoji">{stories[currentSlide].emoji}</div>
+                            )}
+                            <div className="story-year">{stories[currentSlide].year}</div>
+                            <h3 className="story-title">{stories[currentSlide].title}</h3>
+                            <p className="story-description">{stories[currentSlide].description}</p>
+
+                            {/* Comic-style decoration */}
+                            <div className="comic-border"></div>
+                        </motion.div>
+                    </div>
+
+                    <button
+                        className="carousel-arrow carousel-arrow-right"
+                        onClick={nextSlide}
+                        aria-label="Siguiente"
+                    >
+                        <FaChevronRight />
+                    </button>
+                </div>
+
+                {/* Navigation Dots */}
+                <div className="carousel-dots">
+                    {stories.map((_, index) => (
+                        <button
+                            key={index}
+                            className={`dot ${index === currentSlide ? 'dot-active' : ''}`}
+                            onClick={() => goToSlide(index)}
+                            aria-label={`Ir a slide ${index + 1}`}
+                        />
+                    ))}
+                </div>
+
+                {/* Progress Indicator */}
+                <div className="carousel-progress">
+                    <span className="progress-current">{currentSlide + 1}</span>
+                    <span className="progress-separator">/</span>
+                    <span className="progress-total">{stories.length}</span>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default StoryCarousel;

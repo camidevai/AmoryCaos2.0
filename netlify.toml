@@ -1,0 +1,13 @@
+[build]
+  # Comando para construir tu aplicación
+  command = "npm run build"
+  # Directorio que contiene los archivos construidos
+  publish = "dist"
+
+# Redirecciones para SPA (Single Page Application)
+# Esto asegura que todas las rutas funcionen correctamente
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+

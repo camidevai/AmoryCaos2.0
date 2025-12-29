@@ -1,0 +1,216 @@
+.hallucination-section {
+    background: var(--color-dark);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* Starfield Background */
+.starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--color-tertiary);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--color-tertiary);
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+.hallucination-intro {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    color: var(--color-light-gray);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-3xl);
+    font-family: var(--font-display);
+    font-weight: 500;
+}
+
+/* Content Blocks */
+.hallucination-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.content-block {
+    background: rgba(26, 31, 58, 0.7);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(92, 136, 252, 0.3);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-2xl);
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.content-block:nth-child(even) {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.content-block:nth-child(odd) {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.block-number {
+    position: absolute;
+    top: -20px;
+    left: var(--spacing-lg);
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.25rem;
+    font-family: var(--font-display);
+    box-shadow: var(--shadow-lg);
+}
+
+.content-block h3 {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-white);
+    line-height: 1.4;
+}
+
+.content-block p {
+    color: var(--color-light-gray);
+    line-height: 1.8;
+    font-size: 1.0625rem;
+}
+
+.tooltip-trigger {
+    color: var(--color-warm-orange);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.tooltip-trigger:hover {
+    color: var(--color-warm-coral);
+}
+
+.tooltip-box {
+    background: rgba(255, 107, 53, 0.15);
+    border: 2px solid var(--color-warm-orange);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.tooltip-box strong {
+    display: block;
+    color: var(--color-warm-orange);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.0625rem;
+}
+
+.tooltip-box p {
+    margin: 0;
+    color: var(--color-light-gray);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+/* Universe Metaphor */
+.universe-metaphor {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(14, 90, 249, 0.2) 0%, rgba(92, 136, 252, 0.1) 100%);
+    border: 3px solid var(--color-tertiary);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-xl), 0 0 50px rgba(92, 136, 252, 0.3);
+}
+
+.metaphor-content h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: var(--spacing-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.metaphor-content p {
+    font-size: 1.125rem;
+    color: var(--color-light-gray);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+    .content-block:nth-child(even),
+    .content-block:nth-child(odd) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hallucination-content {
+        gap: var(--spacing-2xl);
+    }
+
+    .content-block {
+        padding: var(--spacing-lg);
+    }
+
+    .block-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        top: -15px;
+        left: var(--spacing-md);
+    }
+
+    .universe-metaphor {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .star {
+        width: 1.5px;
+        height: 1.5px;
+    }
+}
