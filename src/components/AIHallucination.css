@@ -61,10 +61,13 @@
 .reasons-grid {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-2xl);
     margin-bottom: var(--spacing-3xl);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .reason-card {
@@ -76,6 +79,7 @@
     position: relative;
     transition: all var(--transition-base);
     cursor: pointer;
+    width: 100%;
 }
 
 .reason-card:hover {
@@ -412,15 +416,8 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-    .reasons-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-}
-
 @media (max-width: 768px) {
     .reasons-grid {
-        grid-template-columns: 1fr;
         gap: var(--spacing-xl);
     }
 
