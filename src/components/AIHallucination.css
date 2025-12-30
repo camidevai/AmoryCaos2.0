@@ -3,6 +3,7 @@
     position: relative;
     overflow: hidden;
     min-height: 100vh;
+    padding: var(--spacing-3xl) 0;
 }
 
 /* Starfield Background */
@@ -40,114 +41,318 @@
     }
 }
 
+/* Header */
+.hallucination-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: var(--spacing-3xl);
+}
+
 .hallucination-intro {
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     color: var(--color-light-gray);
     max-width: 700px;
-    margin: 0 auto var(--spacing-3xl);
+    margin: 0 auto;
     font-family: var(--font-display);
     font-weight: 500;
 }
 
-/* Content Blocks */
-.hallucination-content {
+/* Reasons Grid - Visual Cards */
+.reasons-grid {
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-3xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-2xl);
     margin-bottom: var(--spacing-3xl);
 }
 
-.content-block {
-    background: rgba(26, 31, 58, 0.7);
+.reason-card {
+    background: rgba(26, 31, 58, 0.8);
     backdrop-filter: blur(20px);
     border: 2px solid rgba(92, 136, 252, 0.3);
     border-radius: var(--radius-2xl);
     padding: var(--spacing-2xl);
     position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
+    transition: all var(--transition-base);
+    cursor: pointer;
 }
 
-.content-block:nth-child(even) {
-    margin-left: auto;
-    margin-right: 0;
+.reason-card:hover {
+    border-color: var(--color-tertiary);
+    box-shadow: var(--shadow-xl), 0 0 30px rgba(92, 136, 252, 0.3);
 }
 
-.content-block:nth-child(odd) {
-    margin-left: 0;
-    margin-right: auto;
+.reason-card-primary {
+    border-color: rgba(14, 90, 249, 0.5);
 }
 
-.block-number {
-    position: absolute;
-    top: -20px;
-    left: var(--spacing-lg);
-    background: var(--gradient-primary);
-    color: var(--color-white);
-    width: 50px;
-    height: 50px;
+.reason-card-warm {
+    border-color: rgba(255, 107, 53, 0.5);
+}
+
+.reason-card-accent {
+    border-color: rgba(255, 193, 7, 0.5);
+}
+
+.reason-card-danger {
+    border-color: rgba(255, 107, 107, 0.5);
+}
+
+/* Icon Wrapper */
+.reason-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+}
+
+.reason-icon {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 1.25rem;
-    font-family: var(--font-display);
+    font-size: 2.5rem;
+    background: var(--gradient-primary);
+    color: var(--color-white);
     box-shadow: var(--shadow-lg);
+    animation: float 3s ease-in-out infinite;
 }
 
-.content-block h3 {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.reason-icon-primary {
+    background: linear-gradient(135deg, #0e5af9 0%, #5c88fc 100%);
+}
+
+.reason-icon-warm {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+}
+
+.reason-icon-accent {
+    background: linear-gradient(135deg, #ffc107 0%, #ffeb3b 100%);
+}
+
+.reason-icon-danger {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+}
+
+.reason-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-tertiary);
+    font-family: var(--font-display);
+}
+
+.reason-title {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
     margin-bottom: var(--spacing-md);
     color: var(--color-white);
     line-height: 1.4;
+    font-weight: 700;
 }
 
-.content-block p {
+.reason-description {
     color: var(--color-light-gray);
     line-height: 1.8;
-    font-size: 1.0625rem;
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
 }
 
-.tooltip-trigger {
+.reason-tooltip {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid var(--color-warm-orange);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
     color: var(--color-warm-orange);
-    cursor: pointer;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    transition: all var(--transition-base);
-    position: relative;
+    margin-bottom: var(--spacing-md);
 }
 
-.tooltip-trigger:hover {
-    color: var(--color-warm-coral);
+/* GIF Placeholder */
+.reason-visual {
+    margin-top: var(--spacing-lg);
 }
 
-.tooltip-box {
-    background: rgba(255, 107, 53, 0.15);
-    border: 2px solid var(--color-warm-orange);
+.gif-placeholder {
+    background: rgba(92, 136, 252, 0.1);
+    border: 2px dashed rgba(92, 136, 252, 0.3);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-md);
-    margin-top: var(--spacing-md);
+    padding: var(--spacing-xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    min-height: 200px;
+    justify-content: center;
+    transition: all var(--transition-base);
 }
 
-.tooltip-box strong {
-    display: block;
-    color: var(--color-warm-orange);
-    margin-bottom: var(--spacing-xs);
-    font-size: 1.0625rem;
+.gif-placeholder:hover {
+    border-color: var(--color-tertiary);
+    background: rgba(92, 136, 252, 0.15);
 }
 
-.tooltip-box p {
-    margin: 0;
+.gif-placeholder svg {
+    font-size: 3rem;
+    color: var(--color-tertiary);
+    opacity: 0.5;
+}
+
+.gif-placeholder span {
     color: var(--color-light-gray);
-    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.gif-placeholder small {
+    color: var(--color-light-gray);
+    opacity: 0.7;
+    font-size: 0.85rem;
+}
+
+/* Examples Section */
+.examples-section {
+    position: relative;
+    z-index: 1;
+    margin: var(--spacing-3xl) 0;
+    padding: var(--spacing-3xl) 0;
+    border-top: 2px solid rgba(92, 136, 252, 0.2);
+}
+
+.examples-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.examples-title svg {
+    color: var(--color-warm-orange);
+}
+
+.examples-subtitle {
+    text-align: center;
+    color: var(--color-light-gray);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.example-card {
+    background: rgba(26, 31, 58, 0.8);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.example-card:hover {
+    border-color: rgba(255, 107, 107, 0.6);
+    box-shadow: var(--shadow-xl), 0 0 30px rgba(255, 107, 107, 0.2);
+}
+
+.example-card.active {
+    border-color: var(--color-warm-orange);
+    background: rgba(26, 31, 58, 0.95);
+}
+
+.example-type {
+    display: inline-block;
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.example-question {
+    color: var(--color-white);
+    font-size: 1.0625rem;
+    margin-bottom: var(--spacing-md);
     line-height: 1.6;
 }
 
-/* Universe Metaphor */
+.example-question strong {
+    color: var(--color-tertiary);
+}
+
+.example-details {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(92, 136, 252, 0.2);
+}
+
+.example-ai-answer {
+    margin-bottom: var(--spacing-md);
+}
+
+.example-ai-answer strong {
+    display: block;
+    color: var(--color-warm-orange);
+    margin-bottom: var(--spacing-xs);
+}
+
+.example-ai-answer p {
+    color: var(--color-light-gray);
+    font-style: italic;
+    margin: 0;
+    padding-left: var(--spacing-md);
+    border-left: 3px solid rgba(255, 107, 53, 0.3);
+}
+
+.example-reality {
+    background: rgba(255, 107, 107, 0.1);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 4px solid #ff6b6b;
+}
+
+.example-reality strong {
+    display: block;
+    color: #ff6b6b;
+    margin-bottom: var(--spacing-xs);
+}
+
+.example-reality p {
+    color: var(--color-light-gray);
+    margin: 0;
+}
+
+.example-cta {
+    text-align: center;
+    color: var(--color-tertiary);
+    font-weight: 600;
+    margin-top: var(--spacing-md);
+    font-size: 0.9rem;
+}
+
+/* Universe Metaphor - Conclusión */
 .universe-metaphor {
     position: relative;
     z-index: 1;
@@ -157,8 +362,25 @@
     padding: var(--spacing-3xl) var(--spacing-2xl);
     text-align: center;
     max-width: 900px;
-    margin: 0 auto;
+    margin: var(--spacing-3xl) auto 0;
     box-shadow: var(--shadow-xl), 0 0 50px rgba(92, 136, 252, 0.3);
+}
+
+.metaphor-icon {
+    font-size: 4rem;
+    color: var(--color-tertiary);
+    margin-bottom: var(--spacing-lg);
+    animation: spin-slow 20s linear infinite;
+}
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .metaphor-content h3 {
@@ -175,42 +397,66 @@
     color: var(--color-light-gray);
     line-height: 1.8;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.metaphor-highlight {
+    background: rgba(255, 193, 7, 0.15);
+    border: 2px solid var(--color-warm-orange);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: var(--color-warm-orange);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    display: inline-block;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-
-    .content-block:nth-child(even),
-    .content-block:nth-child(odd) {
-        margin-left: auto;
-        margin-right: auto;
+    .reasons-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
 @media (max-width: 768px) {
-    .hallucination-content {
-        gap: var(--spacing-2xl);
+    .reasons-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
     }
 
-    .content-block {
-        padding: var(--spacing-lg);
+    .reason-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
     }
 
-    .block-number {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-        top: -15px;
-        left: var(--spacing-md);
+    .reason-number {
+        font-size: 1.5rem;
+    }
+
+    .examples-grid {
+        grid-template-columns: 1fr;
     }
 
     .universe-metaphor {
         padding: var(--spacing-2xl) var(--spacing-lg);
     }
 
+    .metaphor-icon {
+        font-size: 3rem;
+    }
+
     .star {
         width: 1.5px;
         height: 1.5px;
+    }
+
+    .gif-placeholder {
+        min-height: 150px;
+        padding: var(--spacing-lg);
+    }
+
+    .gif-placeholder svg {
+        font-size: 2rem;
     }
 }
