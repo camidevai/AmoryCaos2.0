@@ -7,78 +7,39 @@
 2. ❌ El contador "📊 Votos en vivo" no se actualiza cuando otros votan
 3. ❌ Los participantes tienen que refrescar manualmente la página
 
-### ✅ Lo que SÍ funciona:
-- ✅ Los votos se guardan correctamente en Supabase
-- ✅ El conteo de votos es preciso
-- ✅ La conexión a Supabase funciona
-
-### 🔍 Diagnóstico:
-**El problema NO es la clave de Supabase** (si los votos se guardan, la clave funciona).
-**El problema ES la configuración de Realtime** en Supabase Dashboard.
-
----
-
-## 🧪 Paso 0: Ejecutar Diagnóstico Automático
-
-Antes de hacer cambios, ejecuta el diagnóstico para identificar el problema exacto:
-
-1. Abre la consola del navegador (F12)
-2. Pega este código:
-
-```javascript
-import { runRealtimeDiagnostics } from './src/utils/realtimeDiagnostics.js';
-runRealtimeDiagnostics();
-```
-
-O simplemente escribe en consola:
-```javascript
-runRealtimeDiagnostics();
-```
-
-El diagnóstico te dirá exactamente qué está fallando.
-
 ---
 
 ## ✅ Solución Paso a Paso
 
-### **Paso 1: Verificar que la Clave de Supabase Funciona**
+### **Paso 1: Verificar la Clave de Supabase**
 
-**IMPORTANTE:** Si los votos se están guardando, tu clave YA funciona. No necesitas cambiarla.
-
-La clave actual:
+La clave actual en `src/lib/supabase.js` es **INCORRECTA**:
 ```javascript
 const supabaseAnonKey = 'sb_publishable_6RkYpetmpWtSCSKOZ1kr9g_vlhbVmfE';
 ```
 
-**Verificación:**
-- ✅ Si puedes votar y los votos se guardan → La clave funciona
-- ❌ Si no puedes votar → Entonces sí necesitas actualizar la clave
+**Esta NO es una clave JWT válida de Supabase.**
 
-**Solo si necesitas actualizar la clave:**
-1. Ve a Supabase Dashboard → Settings → API
-2. Copia la clave **`anon` / `public`**
-3. Reemplaza en `src/lib/supabase.js`
+#### Cómo obtener la clave correcta:
+
+1. Ve a tu proyecto en Supabase: https://supabase.com/dashboard
+2. Selecciona tu proyecto
+3. Ve a **Settings** (⚙️) → **API**
+4. Copia la clave **`anon` / `public`** que empieza con `eyJ...`
+5. Reemplaza en `src/lib/supabase.js`:
+
+```javascript
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // Tu clave real
+```
 
 ---
 
-### **Paso 2: Habilitar Realtime en la Tabla** ⚠️ **ESTE ES EL PROBLEMA MÁS COMÚN**
+### **Paso 2: Habilitar Realtime en la Tabla**
 
-**Este es probablemente tu problema si:**
-- ✅ Los votos se guardan correctamente
-- ❌ Pero no ves actualizaciones en tiempo real
-
-**Solución:**
-1. Ve a Supabase Dashboard: https://supabase.com/dashboard
-2. Selecciona tu proyecto
-3. Ve a **Database** → **Replication**
-4. Busca la tabla `game_state` en la lista
-5. **Habilita** el toggle de Realtime (debe estar en verde ✅)
-6. Haz clic en **Save** o **Apply changes**
-
-**Verificación:**
-- El toggle debe estar verde/activado
-- Puede tomar unos segundos en aplicarse
-- Refresca la página de tu app después de habilitarlo
+1. Ve a Supabase Dashboard → **Database** → **Replication**
+2. Busca la tabla `game_state`
+3. **Habilita** la opción de Realtime para esta tabla
+4. Asegúrate de que esté marcada con un ✅
 
 ---
 
