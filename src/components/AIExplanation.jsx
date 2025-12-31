@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { FaCheckCircle, FaTimesCircle, FaPlay, FaTrophy, FaQrcode } from 'react-icons/fa';
 import { QRCodeSVG } from 'qrcode.react';
 import gameService from '../services/gameService';
+import RealtimeStatus from './RealtimeStatus';
 import './AIExplanation.css';
 
 const AIExplanation = () => {
@@ -57,6 +58,7 @@ const AIExplanation = () => {
 
         // Subscribe to game state changes
         const unsubscribe = gameService.subscribe((newState) => {
+            console.log('🔄 Component received state update:', newState);
             setGameState(newState);
         });
 
@@ -114,6 +116,7 @@ const AIExplanation = () => {
     if (isVoteMode) {
         return (
             <section className="ai-explanation-section section vote-mode">
+                <RealtimeStatus gameState={gameState} />
                 <div className="container">
                     <motion.div
                         className="vote-container"
