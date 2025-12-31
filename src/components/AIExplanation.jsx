@@ -183,19 +183,37 @@ const AIExplanation = () => {
                         {gameState.gameState === 'results' && currentQuestion && (
                             <div className="results-view">
                                 <h3 className="question-text">{currentQuestion.question}</h3>
-                                <div className="answer-reveal">
-                                    {currentQuestion.explanation}
-                                </div>
-                                <div className="vote-stats">
-                                    <div className="stat-bar">
-                                        <div className="stat-label">✅ Verdadero: {percentages.true}%</div>
-                                        <div className="stat-bar-fill" style={{ width: `${percentages.true}%` }}></div>
+
+                                {hasVoted ? (
+                                    <>
+                                        <div className="answer-reveal">
+                                            {currentQuestion.explanation}
+                                        </div>
+                                        <div className="vote-stats">
+                                            <div className="stat-bar">
+                                                <div className="stat-label">✅ Verdadero: {percentages.true}%</div>
+                                                <div className="stat-bar-fill" style={{ width: `${percentages.true}%` }}></div>
+                                            </div>
+                                            <div className="stat-bar">
+                                                <div className="stat-label">❌ Falso: {percentages.false}%</div>
+                                                <div className="stat-bar-fill stat-bar-false" style={{ width: `${percentages.false}%` }}></div>
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="too-late-message">
+                                        <p className="too-late-icon">⏰</p>
+                                        <p className="too-late-text">
+                                            ¡Llegaste un poco tarde!
+                                        </p>
+                                        <p className="too-late-subtitle">
+                                            Esta pregunta ya fue respondida. Espera a la siguiente pregunta para participar.
+                                        </p>
+                                        <div className="answer-reveal">
+                                            {currentQuestion.explanation}
+                                        </div>
                                     </div>
-                                    <div className="stat-bar">
-                                        <div className="stat-label">❌ Falso: {percentages.false}%</div>
-                                        <div className="stat-bar-fill stat-bar-false" style={{ width: `${percentages.false}%` }}></div>
-                                    </div>
-                                </div>
+                                )}
                             </div>
                         )}
                     </motion.div>

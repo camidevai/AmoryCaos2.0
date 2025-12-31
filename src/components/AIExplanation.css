@@ -231,6 +231,34 @@
     animation: fadeIn 0.5s ease-out;
 }
 
+.too-late-message {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: var(--radius-xl);
+    border: 2px solid rgba(255, 107, 53, 0.5);
+    margin-top: var(--spacing-xl);
+}
+
+.too-late-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.too-late-text {
+    font-size: 1.8rem;
+    color: #ff6b35;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.too-late-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-light-gray);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
 .answer-reveal {
     font-size: 1.8rem;
     text-align: center;
