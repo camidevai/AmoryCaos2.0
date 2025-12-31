@@ -90,15 +90,15 @@
 
 .takeaways-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-xl);
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
 }
 
 .takeaway-card {
     background: var(--color-dark-secondary);
-    border-radius: 20px;
-    padding: var(--spacing-2xl);
-    border: 3px solid;
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    border: 2px solid;
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
@@ -106,7 +106,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-height: 220px;
+    min-height: 180px;
 }
 
 .takeaway-card::before {
@@ -146,8 +146,8 @@
 }
 
 .takeaway-icon {
-    font-size: 3.5rem;
-    margin-bottom: var(--spacing-lg);
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
     position: relative;
     z-index: 1;
 }
@@ -173,17 +173,17 @@
 }
 
 .takeaway-text {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: var(--color-light-gray);
-    line-height: 1.6;
-    margin-bottom: var(--spacing-md);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-sm);
     flex: 1;
     position: relative;
     z-index: 1;
 }
 
 .takeaway-check {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--color-tertiary);
     margin-top: auto;
     position: relative;
@@ -239,6 +239,12 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .takeaways-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .final-quote {
         padding: var(--spacing-lg) 0;
@@ -253,11 +259,11 @@
     }
 
     .takeaway-card {
-        min-height: 200px;
+        min-height: 160px;
     }
 
     .takeaway-icon {
-        font-size: 3rem;
+        font-size: 2.2rem;
     }
 
     .final-buttons {
@@ -282,15 +288,15 @@
 
 @media (max-width: 480px) {
     .takeaway-card {
-        padding: var(--spacing-lg);
-        min-height: 180px;
+        padding: var(--spacing-md);
+        min-height: 150px;
     }
 
     .takeaway-icon {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .takeaway-text {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
