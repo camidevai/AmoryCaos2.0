@@ -8,6 +8,7 @@ import Resources from './components/Resources';
 import Contact from './components/Contact';
 import FinalCTA from './components/FinalCTA';
 import FloatingHelp from './components/FloatingHelp';
+import FloatingContact from './components/FloatingContact';
 import './App.css';
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
     <div className="App">
       {/* Floating Help Button */}
       <FloatingHelp />
+
+      {/* Floating Contact Button with QR */}
+      <FloatingContact onContactClick={handleContactClick} />
 
       {/* Main Content */}
       <main>
