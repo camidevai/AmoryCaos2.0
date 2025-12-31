@@ -18,58 +18,50 @@ const FloatingContact = ({ onContactClick }) => {
 
     return (
         <div className="floating-contact-container">
-            {/* QR Code Popup */}
+            {/* QR Alert Card - Always shows QR, appears/disappears like alert */}
             <AnimatePresence>
                 {showQR && (
-                    <>
-                        {/* Backdrop */}
-                        <motion.div
-                            className="qr-backdrop"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                    <motion.div
+                        className="qr-alert-card"
+                        initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 100, scale: 0.8 }}
+                        transition={{
+                            type: "spring",
+                            damping: 20,
+                            stiffness: 300
+                        }}
+                    >
+                        <button
+                            className="qr-close"
                             onClick={() => setShowQR(false)}
-                        />
-                        
-                        {/* QR Card */}
-                        <motion.div
-                            className="qr-card"
-                            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            aria-label="Cerrar"
                         >
-                            <button 
-                                className="qr-close"
-                                onClick={() => setShowQR(false)}
-                                aria-label="Cerrar"
-                            >
-                                <FaTimes />
-                            </button>
+                            <FaTimes />
+                        </button>
 
-                            <h3 className="qr-title">Escanea para visitar</h3>
-                            
-                            <div className="qr-code-wrapper">
-                                <QRCodeSVG
-                                    value="https://amorycodigo.netlify.app/"
-                                    size={200}
-                                    bgColor="#ffffff"
-                                    fgColor="#1a1f3a"
-                                    level="H"
-                                    includeMargin={true}
-                                />
-                            </div>
+                        <h3 className="qr-title">Escanea para visitar</h3>
 
-                            <p className="qr-url">amorycodigo.netlify.app</p>
+                        <div className="qr-code-wrapper">
+                            <QRCodeSVG
+                                value="https://amorycodigo.netlify.app/"
+                                size={120}
+                                bgColor="#ffffff"
+                                fgColor="#1a1f3a"
+                                level="H"
+                                includeMargin={true}
+                            />
+                        </div>
 
-                            <button 
-                                className="qr-contact-btn"
-                                onClick={handleContactClick}
-                            >
-                                <FaBriefcase /> Contactar con nosotros
-                            </button>
-                        </motion.div>
-                    </>
+                        <p className="qr-url">amorycodigo.netlify.app</p>
+
+                        <button
+                            className="qr-contact-btn"
+                            onClick={handleContactClick}
+                        >
+                            <FaBriefcase /> Contactar
+                        </button>
+                    </motion.div>
                 )}
             </AnimatePresence>
 
@@ -84,14 +76,14 @@ const FloatingContact = ({ onContactClick }) => {
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
             >
                 <motion.div
-                    animate={{ 
+                    animate={{
                         rotate: showQR ? 180 : 0,
                     }}
                     transition={{ duration: 0.3 }}
                 >
                     {showQR ? <FaTimes /> : <FaBriefcase />}
                 </motion.div>
-                
+
                 {/* Pulse animation */}
                 <motion.div
                     className="pulse-ring"
