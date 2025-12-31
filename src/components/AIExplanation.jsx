@@ -87,9 +87,27 @@ const AIExplanation = () => {
                             transition={{ duration: 0.5 }}
                             className="timeline-section"
                         >
-                            <h3 className="section-title">📜 La IA no es nueva</h3>
+                            <h3 className="section-title">📜 La IA tiene más de 2000 años de historia</h3>
+                            <p className="section-intro">Desde la lógica antigua hasta la guerra de los gigantes tecnológicos</p>
 
                             <div className="timeline">
+                                {/* Aristóteles */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.05 }}
+                                >
+                                    <div className="timeline-year">~350 a.C.</div>
+                                    <div className="timeline-content">
+                                        <h4>🏛️ Aristóteles - El Silogismo</h4>
+                                        <p>Hace más de 2000 años, Aristóteles creó el <strong>silogismo</strong>, la primera forma de razonamiento lógico estructurado. Base fundamental del pensamiento computacional.</p>
+                                        <p className="timeline-example">Ejemplo: "Todos los humanos son mortales. Sócrates es humano. Por lo tanto, Sócrates es mortal."</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* René Descartes */}
                                 <motion.div
                                     className="timeline-item"
                                     initial={{ opacity: 0, x: -50 }}
@@ -97,13 +115,29 @@ const AIExplanation = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 }}
                                 >
-                                    <div className="timeline-year">1950</div>
+                                    <div className="timeline-year">1637</div>
                                     <div className="timeline-content">
-                                        <h4>🧠 Alan Turing</h4>
-                                        <p>Creador de la famosa máquina para descifrar códigos nazis. Propone el "Test de Turing" para medir la inteligencia de las máquinas.</p>
+                                        <h4>🧮 René Descartes - Método Cartesiano</h4>
+                                        <p>Propone el <strong>método científico</strong> y el razonamiento deductivo. "Pienso, luego existo" - la base del pensamiento racional que inspiraría la computación.</p>
                                     </div>
                                 </motion.div>
 
+                                {/* Charles Babbage */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.15 }}
+                                >
+                                    <div className="timeline-year">1837</div>
+                                    <div className="timeline-content">
+                                        <h4>⚙️ Charles Babbage - Máquina Analítica</h4>
+                                        <p>Diseña la primera <strong>computadora mecánica programable</strong>. Aunque nunca se construyó completamente, sentó las bases de la computación moderna.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* Ada Lovelace */}
                                 <motion.div
                                     className="timeline-item"
                                     initial={{ opacity: 0, x: -50 }}
@@ -111,13 +145,31 @@ const AIExplanation = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.2 }}
                                 >
-                                    <div className="timeline-year">1956</div>
+                                    <div className="timeline-year">1843</div>
                                     <div className="timeline-content">
-                                        <h4>🎓 Conferencia de Dartmouth</h4>
-                                        <p>Nace oficialmente el término <strong>"Inteligencia Artificial"</strong>. El objetivo: crear máquinas que piensen y aprendan como humanos.</p>
+                                        <h4>👩‍💻 Ada Lovelace - Primera Programadora</h4>
+                                        <p>Crea el <strong>primer algoritmo</strong> destinado a ser procesado por una máquina. Visionó que las computadoras podrían ir más allá de simples cálculos.</p>
+                                        <p className="timeline-highlight">💡 "La máquina podría componer música, producir gráficos y ser útil a la ciencia."</p>
                                     </div>
                                 </motion.div>
 
+                                {/* Alan Turing */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.25 }}
+                                >
+                                    <div className="timeline-year">1950</div>
+                                    <div className="timeline-content">
+                                        <h4>🧠 Alan Turing - Test de Turing</h4>
+                                        <p>Héroe de la Segunda Guerra Mundial que descifró códigos nazis. Propone el <strong>"Test de Turing"</strong> para medir si una máquina puede pensar.</p>
+                                        <p className="timeline-highlight">❓ "¿Puede una máquina pensar?" - La pregunta que inició todo.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* Conferencia de Dartmouth */}
                                 <motion.div
                                     className="timeline-item"
                                     initial={{ opacity: 0, x: -50 }}
@@ -125,13 +177,127 @@ const AIExplanation = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.3 }}
                                 >
+                                    <div className="timeline-year">1956</div>
+                                    <div className="timeline-content">
+                                        <h4>🎓 Conferencia de Dartmouth</h4>
+                                        <p>Nace oficialmente el término <strong>"Inteligencia Artificial"</strong>. John McCarthy, Marvin Minsky y otros visionarios se reúnen con un objetivo: crear máquinas que piensen como humanos.</p>
+                                        <p className="timeline-highlight">🎯 El nacimiento oficial de la IA como campo de estudio.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* IBM Deep Blue */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.35 }}
+                                >
+                                    <div className="timeline-year">1997</div>
+                                    <div className="timeline-content">
+                                        <h4>♟️ IBM Deep Blue vs Kasparov</h4>
+                                        <p>La supercomputadora de IBM <strong>Deep Blue</strong> derrota al campeón mundial de ajedrez Garry Kasparov. Primera vez que una máquina vence a un humano en ajedrez.</p>
+                                        <p className="timeline-highlight">🏆 La IA demuestra que puede superar a los humanos en tareas complejas.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* IBM Watson */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.4 }}
+                                >
+                                    <div className="timeline-year">2011</div>
+                                    <div className="timeline-content">
+                                        <h4>🎮 IBM Watson - Jeopardy!</h4>
+                                        <p><strong>Watson</strong> de IBM gana el concurso Jeopardy! contra campeones humanos. Demuestra comprensión del lenguaje natural y razonamiento complejo.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* Redes Neuronales - Google */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.45 }}
+                                >
+                                    <div className="timeline-year">2012</div>
+                                    <div className="timeline-content">
+                                        <h4>🧬 Revolución de las Redes Neuronales</h4>
+                                        <p>Google y otros gigantes tecnológicos empiezan a desarrollar <strong>redes neuronales profundas</strong>. El deep learning cambia el juego completamente.</p>
+                                        <p className="timeline-highlight">🔬 Las máquinas empiezan a "aprender" de verdad.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* Google BERT */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.5 }}
+                                >
+                                    <div className="timeline-year">2018</div>
+                                    <div className="timeline-content">
+                                        <h4>🔤 Google BERT</h4>
+                                        <p>Google lanza <strong>BERT</strong>, revolucionando la comprensión del lenguaje natural. Las búsquedas de Google se vuelven mucho más inteligentes.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* ChatGPT */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.55 }}
+                                >
                                     <div className="timeline-year">2022</div>
                                     <div className="timeline-content">
-                                        <h4>🚀 Revolución Generativa</h4>
-                                        <p>ChatGPT llega al público y cambia todo. La IA generativa se vuelve accesible para todos.</p>
+                                        <h4>🚀 ChatGPT - Revolución Generativa</h4>
+                                        <p><strong>OpenAI</strong> lanza ChatGPT y cambia todo. La IA generativa se vuelve accesible para todos. 100 millones de usuarios en 2 meses.</p>
+                                        <p className="timeline-highlight">💥 El momento que cambió el mundo para siempre.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* La Guerra de las IAs */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.6 }}
+                                >
+                                    <div className="timeline-year">2023-2025</div>
+                                    <div className="timeline-content">
+                                        <h4>⚔️ La Guerra de los Gigantes</h4>
+                                        <p>Comienza la <strong>batalla por la supremacía de la IA</strong>:</p>
+                                        <ul className="timeline-list">
+                                            <li><strong>🟢 OpenAI (ChatGPT)</strong> - Líder en IA conversacional</li>
+                                            <li><strong>🔵 Google (Gemini, BARD)</strong> - El gigante de las búsquedas contraataca</li>
+                                            <li><strong>🟣 Anthropic (Claude)</strong> - IA más segura y ética</li>
+                                            <li><strong>🔴 Meta (Llama)</strong> - IA de código abierto</li>
+                                            <li><strong>🟠 DeepSeek</strong> - La sorpresa china que sacudió el mercado</li>
+                                        </ul>
+                                        <p className="timeline-highlight">🌍 La carrera por la IA más poderosa está en su punto más álgido.</p>
                                     </div>
                                 </motion.div>
                             </div>
+
+                            <motion.div
+                                className="highlight-box"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.7 }}
+                            >
+                                <p className="highlight-text">
+                                    🎯 <strong>De Aristóteles a ChatGPT:</strong> 2000 años de evolución del pensamiento lógico hasta las máquinas que crean contenido. La IA no es nueva, pero <strong>nunca había sido tan poderosa</strong>.
+                                </p>
+                            </motion.div>
                         </motion.div>
                     )}
 

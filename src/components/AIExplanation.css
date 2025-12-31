@@ -157,6 +157,48 @@
     line-height: 1.6;
 }
 
+.timeline-example {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(92, 136, 252, 0.1);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 8px;
+    font-style: italic;
+    color: var(--color-light-gray);
+}
+
+.timeline-highlight {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.15) 0%, rgba(255, 140, 0, 0.1) 100%);
+    border-left: 3px solid var(--color-warm-orange);
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--color-warm-orange);
+}
+
+.timeline-list {
+    margin-top: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+    list-style: none;
+}
+
+.timeline-list li {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-light-gray);
+    line-height: 1.6;
+    position: relative;
+    padding-left: var(--spacing-md);
+}
+
+.timeline-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
 /* Comparison Grid (Tipos de IA) */
 .comparison-grid {
     display: grid;
