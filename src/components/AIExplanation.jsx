@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { FaBrain, FaCompass, FaLightbulb, FaRobot, FaExclamationTriangle } from 'react-icons/fa';
 import './AIExplanation.css';
 
 const AIExplanation = () => {
@@ -67,6 +68,12 @@ const AIExplanation = () => {
                         onClick={() => setActiveTab('herramientas')}
                     >
                         🛠️ Herramientas
+                    </button>
+                    <button
+                        className={`tab-btn ${activeTab === 'alucinaciones' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('alucinaciones')}
+                    >
+                        🔍 ¿Por qué alucina?
                     </button>
                 </motion.div>
 
@@ -413,6 +420,216 @@ const AIExplanation = () => {
                                 <p className="quote-text">
                                     "Estas son mis aliadas diarias. Cada una tiene su magia, y combinadas... <strong>¡te hacen volar!</strong> ✨"
                                 </p>
+                            </motion.div>
+                        </motion.div>
+                    )}
+
+                    {/* TAB: ¿Por qué alucina? */}
+                    {activeTab === 'alucinaciones' && (
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <h3 className="section-title">🔍 ¿Por qué la IA alucina?</h3>
+                            <p className="section-intro">"Cuando la IA 'miente', no es error... es su forma de llenar el vacío"</p>
+
+                            {/* Starfield Background */}
+                            <div className="hallucination-starfield">
+                                {[...Array(30)].map((_, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="star"
+                                        style={{
+                                            left: `${Math.random() * 100}%`,
+                                            top: `${Math.random() * 100}%`,
+                                        }}
+                                        animate={{
+                                            opacity: [0.2, 1, 0.2],
+                                            scale: [0.8, 1.2, 0.8],
+                                        }}
+                                        transition={{
+                                            duration: 2 + Math.random() * 2,
+                                            repeat: Infinity,
+                                            delay: Math.random() * 2,
+                                        }}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Razones en formato visual interactivo */}
+                            <div className="hallucination-reasons">
+                                {/* Razón 1 */}
+                                <motion.div
+                                    className="hallucination-card card-primary"
+                                    initial={{ opacity: 0, rotateY: -90 }}
+                                    whileInView={{ opacity: 1, rotateY: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1, duration: 0.6 }}
+                                    whileHover={{ scale: 1.05, rotateZ: 2 }}
+                                >
+                                    <div className="hallucination-number">01</div>
+                                    <div className="hallucination-icon">
+                                        <FaBrain />
+                                    </div>
+                                    <h4>Vive en más de 12.000 dimensiones</h4>
+                                    <p>
+                                        Los modelos de lenguaje trabajan en espacios vectoriales de alta dimensionalidad.
+                                        Imagina un universo donde cada palabra tiene su propia coordenada en <strong>miles de dimensiones</strong>.
+                                    </p>
+                                    <div className="hallucination-visual">
+                                        <div className="dimension-cube">
+                                            <motion.div
+                                                className="cube-face"
+                                                animate={{ rotateY: 360 }}
+                                                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                            >
+                                                🧊
+                                            </motion.div>
+                                        </div>
+                                        <span className="visual-label">Espacio vectorial multidimensional</span>
+                                    </div>
+                                </motion.div>
+
+                                {/* Razón 2 */}
+                                <motion.div
+                                    className="hallucination-card card-warm"
+                                    initial={{ opacity: 0, rotateY: -90 }}
+                                    whileInView={{ opacity: 1, rotateY: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2, duration: 0.6 }}
+                                    whileHover={{ scale: 1.05, rotateZ: -2 }}
+                                >
+                                    <div className="hallucination-number">02</div>
+                                    <div className="hallucination-icon">
+                                        <FaCompass />
+                                    </div>
+                                    <h4>Cambia distancia por dirección</h4>
+                                    <p>
+                                        La IA no mide qué tan lejos está una respuesta, sino <strong>en qué dirección apunta</strong>.
+                                        Es como navegar con una brújula en lugar de un mapa.
+                                    </p>
+                                    <div className="hallucination-tooltip">
+                                        💡 Usa el ángulo del coseno para medir similitud entre vectores
+                                    </div>
+                                    <div className="hallucination-visual">
+                                        <motion.div
+                                            className="compass-animation"
+                                            animate={{ rotate: [0, 360] }}
+                                            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                                        >
+                                            🧭
+                                        </motion.div>
+                                        <span className="visual-label">Navegación por similitud angular</span>
+                                    </div>
+                                </motion.div>
+
+                                {/* Razón 3 */}
+                                <motion.div
+                                    className="hallucination-card card-accent"
+                                    initial={{ opacity: 0, rotateY: -90 }}
+                                    whileInView={{ opacity: 1, rotateY: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.3, duration: 0.6 }}
+                                    whileHover={{ scale: 1.05, rotateZ: 2 }}
+                                >
+                                    <div className="hallucination-number">03</div>
+                                    <div className="hallucination-icon">
+                                        <FaLightbulb />
+                                    </div>
+                                    <h4>Inventa respuestas creíbles</h4>
+                                    <p>
+                                        Si no encuentra información relevante, la IA genera algo que <strong>"suene bien"</strong>
+                                        basándose en patrones aprendidos. Prefiere la coherencia sobre la precisión.
+                                    </p>
+                                    <div className="hallucination-tooltip">
+                                        ⚠️ Probabilidad ≠ Verdad
+                                    </div>
+                                    <div className="hallucination-visual">
+                                        <div className="creativity-animation">
+                                            <motion.span
+                                                animate={{ y: [-10, 10, -10], opacity: [0.5, 1, 0.5] }}
+                                                transition={{ duration: 2, repeat: Infinity }}
+                                            >💭</motion.span>
+                                            <motion.span
+                                                animate={{ y: [10, -10, 10], opacity: [1, 0.5, 1] }}
+                                                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                                            >✨</motion.span>
+                                            <motion.span
+                                                animate={{ y: [-5, 5, -5], opacity: [0.7, 1, 0.7] }}
+                                                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                                            >🎨</motion.span>
+                                        </div>
+                                        <span className="visual-label">Generación creativa de patrones</span>
+                                    </div>
+                                </motion.div>
+
+                                {/* Razón 4 */}
+                                <motion.div
+                                    className="hallucination-card card-danger"
+                                    initial={{ opacity: 0, rotateY: -90 }}
+                                    whileInView={{ opacity: 1, rotateY: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.4, duration: 0.6 }}
+                                    whileHover={{ scale: 1.05, rotateZ: -2 }}
+                                >
+                                    <div className="hallucination-number">04</div>
+                                    <div className="hallucination-icon">
+                                        <FaRobot />
+                                    </div>
+                                    <h4>Fue entrenada para evitar el silencio</h4>
+                                    <p>
+                                        Los modelos son penalizados durante el entrenamiento por no responder.
+                                        Esto los incentiva a <strong>siempre generar algo</strong>, incluso cuando deberían decir "no lo sé".
+                                    </p>
+                                    <div className="hallucination-visual">
+                                        <div className="silence-animation">
+                                            <motion.div
+                                                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                                                transition={{ duration: 1.5, repeat: Infinity }}
+                                            >
+                                                🤐
+                                            </motion.div>
+                                            <motion.div
+                                                className="cross-mark"
+                                                animate={{ rotate: [0, 360] }}
+                                                transition={{ duration: 3, repeat: Infinity }}
+                                            >
+                                                ❌
+                                            </motion.div>
+                                        </div>
+                                        <span className="visual-label">Penalización por silencio</span>
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            {/* Conclusión visual */}
+                            <motion.div
+                                className="hallucination-conclusion"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                            >
+                                <div className="conclusion-icon">
+                                    <motion.div
+                                        animate={{ rotate: [0, 360] }}
+                                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                    >
+                                        🧭
+                                    </motion.div>
+                                </div>
+                                <div className="conclusion-content">
+                                    <h4>La IA navega como una brújula, no con una regla</h4>
+                                    <p>
+                                        En este universo oscuro de conocimiento, la IA busca estrellas cercanas.
+                                        Cuando no las encuentra, <strong>crea sus propias constelaciones</strong>.
+                                    </p>
+                                    <div className="conclusion-highlight">
+                                        <FaExclamationTriangle />
+                                        <span>Por eso es crucial <strong>verificar siempre</strong> la información que genera</span>
+                                    </div>
+                                </div>
                             </motion.div>
                         </motion.div>
                     )}
