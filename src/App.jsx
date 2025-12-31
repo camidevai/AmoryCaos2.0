@@ -4,7 +4,6 @@ import StoryCarouselCami from './components/StoryCarouselCami';
 import StoryBridge from './components/StoryBridge';
 import StoryCarouselDaniel from './components/StoryCarouselDaniel';
 import AIExplanation from './components/AIExplanation';
-import AIHallucination from './components/AIHallucination';
 import Resources from './components/Resources';
 import Contact from './components/Contact';
 import FinalCTA from './components/FinalCTA';
@@ -50,13 +49,10 @@ function App() {
         {/* Section 5: AI Explanation */}
         <AIExplanation />
 
-        {/* Section 6: AI Hallucination */}
-        <AIHallucination />
-
-        {/* Section 7: Resources */}
+        {/* Section 6: Resources */}
         <Resources onContactClick={handleContactClick} />
 
-        {/* Section 8: Final CTA */}
+        {/* Section 7: Final CTA */}
         <FinalCTA onContactClick={handleContactClick} />
       </main>
 

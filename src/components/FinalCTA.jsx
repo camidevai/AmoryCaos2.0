@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaFire, FaBullhorn, FaBriefcase, FaCheckCircle, FaRocket, FaLightbulb, FaBrain, FaHeart } from 'react-icons/fa';
+import { FaBullhorn, FaBriefcase, FaCheckCircle, FaRocket, FaLightbulb, FaBrain, FaHeart } from 'react-icons/fa';
 import './FinalCTA.css';
 
 const FinalCTA = ({ onContactClick }) => {
@@ -54,7 +54,7 @@ const FinalCTA = ({ onContactClick }) => {
                     transition={{ duration: 0.6 }}
                 >
                     <h3 className="takeaways-title">
-                        <span className="gradient-text">🎁 Hoy te llevas:</span>
+                        Hoy te llevas:
                     </h3>
                     <div className="takeaways-grid">
                         {takeaways.map((item, index) => (
@@ -87,13 +87,6 @@ const FinalCTA = ({ onContactClick }) => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <motion.button
-                        className="btn btn-primary btn-cta"
-                        whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(92, 136, 252, 0.4)" }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <FaFire /> Quiero el Mini-curso gratuito
-                    </motion.button>
                     <motion.button
                         className="btn btn-secondary btn-cta"
                         whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(255, 107, 107, 0.4)" }}
