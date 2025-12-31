@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import FinalCTA from './components/FinalCTA';
 import FloatingHelp from './components/FloatingHelp';
 import FloatingQR from './components/FloatingQR';
+import RealtimeDiagnosticPanel from './components/RealtimeDiagnosticPanel';
 import './App.css';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
   if (isVoteMode) {
     return (
       <div className="App vote-mode-only">
+        <RealtimeDiagnosticPanel />
         <AIExplanation />
       </div>
     );
@@ -51,6 +53,9 @@ function App() {
 
       {/* Floating QR Code */}
       <FloatingQR />
+
+      {/* Realtime Diagnostic Panel */}
+      <RealtimeDiagnosticPanel />
 
       {/* Main Content */}
       <main>
