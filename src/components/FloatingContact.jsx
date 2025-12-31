@@ -14,66 +14,51 @@ const FloatingContact = ({ onContactClick }) => {
 
     return (
         <div className="floating-contact-container">
-            {/* QR Alert Card - Always visible, expands on click */}
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={isExpanded ? "expanded" : "compact"}
-                    className={`qr-alert-card ${isExpanded ? 'expanded' : 'compact'}`}
-                    initial={{ opacity: 0, y: 100, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 100, scale: 0.8 }}
-                    transition={{
-                        type: "spring",
-                        damping: 20,
-                        stiffness: 300
-                    }}
-                    onClick={() => !isExpanded && setIsExpanded(true)}
-                    style={{ cursor: !isExpanded ? 'pointer' : 'default' }}
-                >
-                    {isExpanded && (
+            {/* Expanded QR Modal */}
+            <AnimatePresence>
+                {isExpanded && (
+                    <motion.div
+                        className="qr-expanded-card"
+                        initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 100, scale: 0.8 }}
+                        transition={{
+                            type: "spring",
+                            damping: 20,
+                            stiffness: 300
+                        }}
+                    >
                         <button
                             className="qr-close"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setIsExpanded(false);
-                            }}
+                            onClick={() => setIsExpanded(false)}
                             aria-label="Cerrar"
                         >
                             <FaTimes />
                         </button>
-                    )}
 
-                    <h3 className="qr-title">
-                        {isExpanded ? 'Escanea para visitar' : 'QR'}
-                    </h3>
+                        <h3 className="qr-title">Escanea para visitar</h3>
 
-                    <div className="qr-code-wrapper">
-                        <QRCodeSVG
-                            value="https://amorycodigo.netlify.app/"
-                            size={isExpanded ? 120 : 60}
-                            bgColor="#ffffff"
-                            fgColor="#1a1f3a"
-                            level="H"
-                            includeMargin={true}
-                        />
-                    </div>
+                        <div className="qr-code-wrapper">
+                            <QRCodeSVG
+                                value="https://amorycodigo.netlify.app/"
+                                size={120}
+                                bgColor="#ffffff"
+                                fgColor="#1a1f3a"
+                                level="H"
+                                includeMargin={true}
+                            />
+                        </div>
 
-                    {isExpanded && (
-                        <>
-                            <p className="qr-url">amorycodigo.netlify.app</p>
+                        <p className="qr-url">amorycodigo.netlify.app</p>
 
-                            <button
-                                className="qr-contact-btn"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleContactClick();
-                                }}
-                            >
-                                <FaBriefcase /> Contactar
-                            </button>
-                        </>
-                    )}
-                </motion.div>
+                        <button
+                            className="qr-contact-btn"
+                            onClick={handleContactClick}
+                        >
+                            <FaBriefcase /> Contactar
+                        </button>
+                    </motion.div>
+                )}
             </AnimatePresence>
 
             {/* Floating Button */}
@@ -110,7 +95,7 @@ const FloatingContact = ({ onContactClick }) => {
                 />
             </motion.button>
 
-            {/* Tooltip */}
+            {/* Tooltip with QR */}
             <AnimatePresence>
                 {!isExpanded && (
                     <motion.div
@@ -119,8 +104,19 @@ const FloatingContact = ({ onContactClick }) => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 10 }}
                         transition={{ delay: 1 }}
+                        onClick={() => setIsExpanded(true)}
+                        style={{ cursor: 'pointer' }}
                     >
-                        ¡Contáctanos!
+                        <div className="tooltip-qr-wrapper">
+                            <QRCodeSVG
+                                value="https://amorycodigo.netlify.app/"
+                                size={50}
+                                bgColor="#ffffff"
+                                fgColor="#1a1f3a"
+                                level="H"
+                            />
+                        </div>
+                        <span className="tooltip-text">¡Contáctanos!</span>
                     </motion.div>
                 )}
             </AnimatePresence>

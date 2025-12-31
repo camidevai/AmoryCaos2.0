@@ -39,7 +39,7 @@
     pointer-events: none;
 }
 
-/* Tooltip */
+/* Tooltip with QR */
 .floating-tooltip {
     position: absolute;
     right: 70px;
@@ -47,29 +47,54 @@
     transform: translateY(-50%);
     background: var(--color-dark-secondary);
     color: var(--color-white);
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 165, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.floating-tooltip:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4);
+    border-color: rgba(255, 165, 0, 0.6);
+}
+
+.tooltip-qr-wrapper {
+    background: white;
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip-text {
     font-size: 0.9rem;
+    font-weight: 600;
     white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 165, 0, 0.3);
 }
 
 .floating-tooltip::after {
     content: '';
     position: absolute;
-    right: -8px;
+    right: -10px;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 8px solid var(--color-dark-secondary);
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
+    border-left: 10px solid var(--color-dark-secondary);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
 }
 
-/* QR Alert Card - Always visible, two states */
-.qr-alert-card {
+/* QR Expanded Card - Only shows when expanded */
+.qr-expanded-card {
     position: fixed;
     bottom: 100px;
     right: 30px;
@@ -79,23 +104,6 @@
     z-index: 9999;
     text-align: center;
     border: 2px solid rgba(255, 165, 0, 0.4);
-    transition: all 0.3s ease;
-}
-
-/* Compact state - Small QR always visible */
-.qr-alert-card.compact {
-    width: 100px;
-    padding: 12px;
-    cursor: pointer;
-}
-
-.qr-alert-card.compact:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 40px rgba(255, 165, 0, 0.3);
-}
-
-/* Expanded state - Full info */
-.qr-alert-card.expanded {
     width: 200px;
     padding: 20px;
 }
@@ -131,11 +139,6 @@
     font-family: var(--font-display);
 }
 
-.qr-alert-card.compact .qr-title {
-    font-size: 0.7rem;
-    margin-bottom: 8px;
-}
-
 .qr-code-wrapper {
     background: white;
     padding: 8px;
@@ -143,11 +146,6 @@
     display: inline-block;
     margin-bottom: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.qr-alert-card.compact .qr-code-wrapper {
-    padding: 6px;
-    margin-bottom: 0;
 }
 
 .qr-url {
@@ -198,36 +196,35 @@
         display: none;
     }
 
-    .qr-alert-card.compact {
-        bottom: 85px;
-        right: 20px;
-        width: 90px;
-        padding: 10px;
+    .floating-tooltip {
+        right: 65px;
+        padding: 10px 12px;
+        gap: 10px;
     }
 
-    .qr-alert-card.expanded {
+    .tooltip-qr-wrapper svg {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .tooltip-text {
+        font-size: 0.85rem;
+    }
+
+    .qr-expanded-card {
         bottom: 85px;
         right: 20px;
         width: 180px;
         padding: 16px;
     }
 
-    .qr-alert-card.expanded .qr-title {
+    .qr-title {
         font-size: 0.85rem;
     }
 
-    .qr-alert-card.compact .qr-title {
-        font-size: 0.65rem;
-    }
-
-    .qr-alert-card.expanded .qr-code-wrapper svg {
+    .qr-code-wrapper svg {
         width: 100px !important;
         height: 100px !important;
-    }
-
-    .qr-alert-card.compact .qr-code-wrapper svg {
-        width: 50px !important;
-        height: 50px !important;
     }
 
     .qr-url {
@@ -242,42 +239,44 @@
         font-size: 1.2rem;
     }
 
-    .qr-alert-card.compact {
-        bottom: 80px;
-        right: 15px;
-        width: 80px;
-        padding: 8px;
+    .floating-tooltip {
+        right: 60px;
+        padding: 8px 10px;
+        gap: 8px;
     }
 
-    .qr-alert-card.expanded {
+    .tooltip-qr-wrapper {
+        padding: 3px;
+    }
+
+    .tooltip-qr-wrapper svg {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .tooltip-text {
+        font-size: 0.8rem;
+    }
+
+    .qr-expanded-card {
         bottom: 80px;
         right: 15px;
         width: 160px;
         padding: 14px;
     }
 
-    .qr-alert-card.expanded .qr-title {
+    .qr-title {
         font-size: 0.8rem;
         margin-bottom: 10px;
-    }
-
-    .qr-alert-card.compact .qr-title {
-        font-size: 0.6rem;
-        margin-bottom: 6px;
     }
 
     .qr-code-wrapper {
         padding: 6px;
     }
 
-    .qr-alert-card.expanded .qr-code-wrapper svg {
+    .qr-code-wrapper svg {
         width: 90px !important;
         height: 90px !important;
-    }
-
-    .qr-alert-card.compact .qr-code-wrapper svg {
-        width: 45px !important;
-        height: 45px !important;
     }
 
     .qr-url {
