@@ -108,8 +108,8 @@ const AIExplanation = () => {
                                             />
                                         </div>
                                         <h4>🏛️ Aristóteles - El Silogismo</h4>
-                                        <p>Hace más de 2000 años, Aristóteles creó el <strong>silogismo</strong>, la primera forma de razonamiento lógico estructurado. Base fundamental del pensamiento computacional.</p>
-                                        <p className="timeline-example">Ejemplo: "Todos los humanos son mortales. Sócrates es humano. Por lo tanto, Sócrates es mortal."</p>
+                                        <p>Hace más de 2000 años, Aristóteles creó el <strong>silogismo</strong>, la primera forma de razonamiento lógico estructurado.</p>
+                                        <p className="timeline-highlight">💡 Base fundamental del pensamiento computacional</p>
                                     </div>
                                 </motion.div>
 
@@ -130,7 +130,8 @@ const AIExplanation = () => {
                                             />
                                         </div>
                                         <h4>🧮 René Descartes - Método Cartesiano</h4>
-                                        <p>Propone el <strong>método científico</strong> y el razonamiento deductivo. "Pienso, luego existo" - la base del pensamiento racional que inspiraría la computación.</p>
+                                        <p>Propone el <strong>método científico</strong> y el razonamiento deductivo.</p>
+                                        <p className="timeline-highlight">💭 "Pienso, luego existo"</p>
                                     </div>
                                 </motion.div>
 
@@ -151,7 +152,8 @@ const AIExplanation = () => {
                                             />
                                         </div>
                                         <h4>⚙️ Charles Babbage - Máquina Analítica</h4>
-                                        <p>Diseña la primera <strong>computadora mecánica programable</strong>. Aunque nunca se construyó completamente, sentó las bases de la computación moderna.</p>
+                                        <p>Diseña la primera <strong>computadora mecánica programable</strong>.</p>
+                                        <p className="timeline-highlight">🔧 Padre de la computación moderna</p>
                                     </div>
                                 </motion.div>
 
@@ -172,8 +174,8 @@ const AIExplanation = () => {
                                             />
                                         </div>
                                         <h4>👩‍💻 Ada Lovelace - Primera Programadora</h4>
-                                        <p>Crea el <strong>primer algoritmo</strong> destinado a ser procesado por una máquina. Visionó que las computadoras podrían ir más allá de simples cálculos.</p>
-                                        <p className="timeline-highlight">💡 "La máquina podría componer música, producir gráficos y ser útil a la ciencia."</p>
+                                        <p>Crea el <strong>primer algoritmo</strong> destinado a ser procesado por una máquina.</p>
+                                        <p className="timeline-highlight">🌟 La primera programadora de la historia</p>
                                     </div>
                                 </motion.div>
 
