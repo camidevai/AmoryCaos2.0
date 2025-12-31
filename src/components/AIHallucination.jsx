@@ -50,31 +50,6 @@ const AIHallucination = () => {
         }
     ];
 
-    // Ejemplos reales de alucinaciones
-    const examples = [
-        {
-            id: 1,
-            question: "¿Cuándo murió el presidente de Chile en 2023?",
-            aiAnswer: "El presidente Gabriel Boric falleció en marzo de 2023...",
-            reality: "❌ Gabriel Boric está vivo. La IA inventó un evento que nunca ocurrió.",
-            type: "Invención de hechos"
-        },
-        {
-            id: 2,
-            question: "Dame la receta del libro 'Cocina Mágica de Hogwarts'",
-            aiAnswer: "En la página 47 del libro encontrarás la receta de Cerveza de Mantequilla...",
-            reality: "❌ Ese libro no existe. La IA creó referencias falsas.",
-            type: "Referencias inventadas"
-        },
-        {
-            id: 3,
-            question: "¿Qué dijo Einstein sobre la IA?",
-            aiAnswer: "Einstein dijo: 'La inteligencia artificial será el mayor logro de la humanidad'...",
-            reality: "❌ Einstein murió en 1955, antes de que existiera la IA moderna.",
-            type: "Citas falsas"
-        }
-    ];
-
     return (
         <section className="hallucination-section section" ref={sectionRef}>
             {/* Animated Starfield Background */}
@@ -150,60 +125,7 @@ const AIHallucination = () => {
                     ))}
                 </div>
 
-                {/* Examples Section - Ejemplos Reales */}
-                <motion.div
-                    className="examples-section"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h3 className="examples-title">
-                        <FaExclamationTriangle /> Ejemplos Reales de Alucinaciones
-                    </h3>
-                    <p className="examples-subtitle">
-                        Casos donde la IA inventó información que parecía real
-                    </p>
 
-                    <div className="examples-grid">
-                        {examples.map((example) => (
-                            <motion.div
-                                key={example.id}
-                                className={`example-card ${activeExample === example.id ? 'active' : ''}`}
-                                onClick={() => setActiveExample(activeExample === example.id ? null : example.id)}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                            >
-                                <div className="example-type">{example.type}</div>
-                                <div className="example-question">
-                                    <strong>Pregunta:</strong> {example.question}
-                                </div>
-
-                                {activeExample === example.id && (
-                                    <motion.div
-                                        className="example-details"
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                    >
-                                        <div className="example-ai-answer">
-                                            <strong>Respuesta de la IA:</strong>
-                                            <p>"{example.aiAnswer}"</p>
-                                        </div>
-                                        <div className="example-reality">
-                                            <strong>Realidad:</strong>
-                                            <p>{example.reality}</p>
-                                        </div>
-                                    </motion.div>
-                                )}
-
-                                <div className="example-cta">
-                                    {activeExample === example.id ? '▲ Ver menos' : '▼ Ver más'}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
 
                 {/* Visual Metaphor - Conclusión */}
                 <motion.div
