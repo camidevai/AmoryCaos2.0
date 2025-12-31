@@ -9,21 +9,15 @@ import Resources from './components/Resources';
 import Contact from './components/Contact';
 import FinalCTA from './components/FinalCTA';
 import FloatingHelp from './components/FloatingHelp';
-import FloatingQR from './components/FloatingQR';
 import './App.css';
 
 function App() {
-  const [isVoteMode, setIsVoteMode] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const contactRef = useRef(null);
 
   useEffect(() => {
     // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
-
-    // Check if we're in vote mode
-    const urlParams = new URLSearchParams(window.location.search);
-    setIsVoteMode(urlParams.get('mode') === 'vote');
   }, []);
 
   const handleContactClick = () => {
@@ -34,23 +28,10 @@ function App() {
     setIsContactModalOpen(false);
   };
 
-  // If in vote mode, render ONLY the voting interface
-  if (isVoteMode) {
-    return (
-      <div className="App vote-mode-only">
-        <AIExplanation />
-      </div>
-    );
-  }
-
-  // Normal presentation mode - render everything
   return (
     <div className="App">
       {/* Floating Help Button */}
       <FloatingHelp />
-
-      {/* Floating QR Code */}
-      <FloatingQR />
 
       {/* Main Content */}
       <main>
@@ -65,6 +46,7 @@ function App() {
 
         {/* Section 4: Historia de Daniel */}
         <StoryBridge />
+
         {/* Section 5: AI Explanation */}
         <AIExplanation />
 
