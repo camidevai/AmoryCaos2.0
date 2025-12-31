@@ -1,13 +1,29 @@
 import { motion } from 'framer-motion';
-import { FaFire, FaBullhorn, FaBriefcase, FaCheckCircle } from 'react-icons/fa';
+import { FaFire, FaBullhorn, FaBriefcase, FaCheckCircle, FaRocket, FaLightbulb, FaBrain, FaHeart } from 'react-icons/fa';
 import './FinalCTA.css';
 
-const FinalCTA = () => {
+const FinalCTA = ({ onContactClick }) => {
     const takeaways = [
-        "Una historia real de transformación",
-        "Un juego interactivo IA: ¿Verdad o Mito?",
-        "conocimientos sobre por qué la IA alucina",
-        "Una nueva forma de pensar sobre tecnología"
+        {
+            icon: <FaHeart />,
+            text: "Una historia real de amor, código y transformación",
+            color: "warm"
+        },
+        {
+            icon: <FaBrain />,
+            text: "Conocimientos profundos sobre cómo funciona la IA",
+            color: "primary"
+        },
+        {
+            icon: <FaLightbulb />,
+            text: "Herramientas prácticas para potenciar tu trabajo",
+            color: "accent"
+        },
+        {
+            icon: <FaRocket />,
+            text: "Una nueva forma de pensar sobre tecnología y futuro",
+            color: "secondary"
+        }
     ];
 
     return (
@@ -37,21 +53,30 @@ const FinalCTA = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h3 className="takeaways-title">Hoy te llevas:</h3>
-                    <ul className="takeaways-list">
+                    <h3 className="takeaways-title">
+                        <span className="gradient-text">🎁 Hoy te llevas:</span>
+                    </h3>
+                    <div className="takeaways-grid">
                         {takeaways.map((item, index) => (
-                            <motion.li
+                            <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
+                                className={`takeaway-card takeaway-${item.color}`}
+                                initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1, duration: 0.4 }}
+                                transition={{ delay: index * 0.15, duration: 0.5 }}
+                                whileHover={{ scale: 1.05, y: -5 }}
                             >
-                                <FaCheckCircle className="check-icon" />
-                                <span>{item}</span>
-                            </motion.li>
+                                <div className="takeaway-icon">
+                                    {item.icon}
+                                </div>
+                                <p className="takeaway-text">{item.text}</p>
+                                <div className="takeaway-check">
+                                    <FaCheckCircle />
+                                </div>
+                            </motion.div>
                         ))}
-                    </ul>
+                    </div>
                 </motion.div>
 
                 {/* CTA Buttons */}
@@ -62,15 +87,40 @@ const FinalCTA = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <button className="btn btn-primary btn-cta">
+                    <motion.button
+                        className="btn btn-primary btn-cta"
+                        whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(92, 136, 252, 0.4)" }}
+                        whileTap={{ scale: 0.95 }}
+                    >
                         <FaFire /> Quiero el Mini-curso gratuito
-                    </button>
-                    <button className="btn btn-secondary btn-cta">
+                    </motion.button>
+                    <motion.button
+                        className="btn btn-secondary btn-cta"
+                        whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(255, 107, 107, 0.4)" }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: 'Amor y Caos - InformatiK-AI',
+                                    text: '¡Descubre esta increíble charla sobre IA!',
+                                    url: window.location.href
+                                });
+                            } else {
+                                navigator.clipboard.writeText(window.location.href);
+                                alert('¡Enlace copiado al portapapeles!');
+                            }
+                        }}
+                    >
                         <FaBullhorn /> Compartir página
-                    </button>
-                    <button className="btn btn-warm btn-cta">
+                    </motion.button>
+                    <motion.button
+                        className="btn btn-warm btn-cta"
+                        whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(255, 165, 0, 0.4)" }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={onContactClick}
+                    >
                         <FaBriefcase /> Contactar con nosotros
-                    </button>
+                    </motion.button>
                 </motion.div>
 
                 {/* Footer */}

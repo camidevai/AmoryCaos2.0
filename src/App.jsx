@@ -57,7 +57,7 @@ function App() {
         <Resources onContactClick={handleContactClick} />
 
         {/* Section 8: Final CTA */}
-        <FinalCTA />
+        <FinalCTA onContactClick={handleContactClick} />
       </main>
 
       {/* Contact Modal */}
