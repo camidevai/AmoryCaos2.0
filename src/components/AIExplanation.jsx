@@ -255,7 +255,7 @@ const AIExplanation = () => {
                                     <div className="timeline-content">
                                         <div className="timeline-image">
                                             <img
-                                                src="https://media.gettyimages.com/id/1240227320/es/foto/deep-blue-ibm-computer-plays-chess-against-world-champion-garry-kasparov-in-new-york-usa-on.jpg?s=612x612&w=0&k=20&c=rObRl1knE8f_4VO2h_3nc_WzMsUkG8L0n-lvSE8LpFI="
+                                                src="https://media.gettyimages.com/id/1240227320/es/foto/world-chess-champion-garry-kasparov-looks-at-the-chessboard-before-his-next-move-in-the-early.jpg?s=1024x1024&w=gi&k=20&c=rObRl1knE8f_4VO2h_3nc_WzMsUkG8L0n-lvSE8LpFI="
                                                 alt="IBM Deep Blue vs Kasparov"
                                             />
                                         </div>
@@ -298,7 +298,7 @@ const AIExplanation = () => {
                                     <div className="timeline-content">
                                         <div className="timeline-image">
                                             <img
-                                                src="https://tse4.mm.bing.net/th/id/OIP.Jt7FgVwjOMpF9UpHaE1?r=0&cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3"
+                                                src="https://media.licdn.com/dms/image/v2/D4D12AQEhXbZ8JAVmyQ/article-cover_image-shrink_720_1280/B4DZdtVlCAGgAI-/0/1749886065216?e=2147483647&v=beta&t=m4vpCWobf9Z28PIz5XUnfZgLD8r1RbwZYKgBtxgWZ7E"
                                                 alt="Redes Neuronales"
                                             />
                                         </div>
@@ -342,7 +342,7 @@ const AIExplanation = () => {
                                     <div className="timeline-content">
                                         <div className="timeline-image">
                                             <img
-                                                src="https://miro.medium.com/v2/resize:fit:1400/1*2T1UdGgN_DwqFhFGcbKP5A.png"
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Zg_632sMkom7YkSXr5jb3aonse44M7_MCg&s"
                                                 alt="Google BERT"
                                             />
                                         </div>
