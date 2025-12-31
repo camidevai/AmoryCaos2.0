@@ -5,70 +5,81 @@ import { FaBriefcase, FaTimes } from 'react-icons/fa';
 import './FloatingContact.css';
 
 const FloatingContact = ({ onContactClick }) => {
-    const [showQR, setShowQR] = useState(false);
-
-    const toggleQR = () => {
-        setShowQR(!showQR);
-    };
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const handleContactClick = () => {
-        setShowQR(false);
+        setIsExpanded(false);
         onContactClick();
     };
 
     return (
         <div className="floating-contact-container">
-            {/* QR Alert Card - Always shows QR, appears/disappears like alert */}
-            <AnimatePresence>
-                {showQR && (
-                    <motion.div
-                        className="qr-alert-card"
-                        initial={{ opacity: 0, y: 100, scale: 0.8 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 100, scale: 0.8 }}
-                        transition={{
-                            type: "spring",
-                            damping: 20,
-                            stiffness: 300
-                        }}
-                    >
+            {/* QR Alert Card - Always visible, expands on click */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={isExpanded ? "expanded" : "compact"}
+                    className={`qr-alert-card ${isExpanded ? 'expanded' : 'compact'}`}
+                    initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 100, scale: 0.8 }}
+                    transition={{
+                        type: "spring",
+                        damping: 20,
+                        stiffness: 300
+                    }}
+                    onClick={() => !isExpanded && setIsExpanded(true)}
+                    style={{ cursor: !isExpanded ? 'pointer' : 'default' }}
+                >
+                    {isExpanded && (
                         <button
                             className="qr-close"
-                            onClick={() => setShowQR(false)}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsExpanded(false);
+                            }}
                             aria-label="Cerrar"
                         >
                             <FaTimes />
                         </button>
+                    )}
 
-                        <h3 className="qr-title">Escanea para visitar</h3>
+                    <h3 className="qr-title">
+                        {isExpanded ? 'Escanea para visitar' : 'QR'}
+                    </h3>
 
-                        <div className="qr-code-wrapper">
-                            <QRCodeSVG
-                                value="https://amorycodigo.netlify.app/"
-                                size={120}
-                                bgColor="#ffffff"
-                                fgColor="#1a1f3a"
-                                level="H"
-                                includeMargin={true}
-                            />
-                        </div>
+                    <div className="qr-code-wrapper">
+                        <QRCodeSVG
+                            value="https://amorycodigo.netlify.app/"
+                            size={isExpanded ? 120 : 60}
+                            bgColor="#ffffff"
+                            fgColor="#1a1f3a"
+                            level="H"
+                            includeMargin={true}
+                        />
+                    </div>
 
-                        <p className="qr-url">amorycodigo.netlify.app</p>
+                    {isExpanded && (
+                        <>
+                            <p className="qr-url">amorycodigo.netlify.app</p>
 
-                        <button
-                            className="qr-contact-btn"
-                            onClick={handleContactClick}
-                        >
-                            <FaBriefcase /> Contactar
-                        </button>
-                    </motion.div>
-                )}
+                            <button
+                                className="qr-contact-btn"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleContactClick();
+                                }}
+                            >
+                                <FaBriefcase /> Contactar
+                            </button>
+                        </>
+                    )}
+                </motion.div>
             </AnimatePresence>
 
             {/* Floating Button */}
             <motion.button
                 className="floating-contact-btn"
-                onClick={toggleQR}
+                onClick={() => setIsExpanded(!isExpanded)}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
@@ -77,11 +88,11 @@ const FloatingContact = ({ onContactClick }) => {
             >
                 <motion.div
                     animate={{
-                        rotate: showQR ? 180 : 0,
+                        rotate: isExpanded ? 180 : 0,
                     }}
                     transition={{ duration: 0.3 }}
                 >
-                    {showQR ? <FaTimes /> : <FaBriefcase />}
+                    {isExpanded ? <FaTimes /> : <FaBriefcase />}
                 </motion.div>
 
                 {/* Pulse animation */}
@@ -101,7 +112,7 @@ const FloatingContact = ({ onContactClick }) => {
 
             {/* Tooltip */}
             <AnimatePresence>
-                {!showQR && (
+                {!isExpanded && (
                     <motion.div
                         className="floating-tooltip"
                         initial={{ opacity: 0, x: 10 }}

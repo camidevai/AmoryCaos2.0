@@ -68,19 +68,36 @@
     border-bottom: 8px solid transparent;
 }
 
-/* QR Alert Card - Compact, always shows QR */
+/* QR Alert Card - Always visible, two states */
 .qr-alert-card {
     position: fixed;
     bottom: 100px;
     right: 30px;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     border-radius: 16px;
-    padding: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 165, 0, 0.3);
     z-index: 9999;
-    width: 200px;
     text-align: center;
     border: 2px solid rgba(255, 165, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Compact state - Small QR always visible */
+.qr-alert-card.compact {
+    width: 100px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.qr-alert-card.compact:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(255, 165, 0, 0.3);
+}
+
+/* Expanded state - Full info */
+.qr-alert-card.expanded {
+    width: 200px;
+    padding: 20px;
 }
 
 .qr-close {
@@ -114,6 +131,11 @@
     font-family: var(--font-display);
 }
 
+.qr-alert-card.compact .qr-title {
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+}
+
 .qr-code-wrapper {
     background: white;
     padding: 8px;
@@ -121,6 +143,11 @@
     display: inline-block;
     margin-bottom: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.qr-alert-card.compact .qr-code-wrapper {
+    padding: 6px;
+    margin-bottom: 0;
 }
 
 .qr-url {
@@ -171,20 +198,36 @@
         display: none;
     }
 
-    .qr-alert-card {
+    .qr-alert-card.compact {
+        bottom: 85px;
+        right: 20px;
+        width: 90px;
+        padding: 10px;
+    }
+
+    .qr-alert-card.expanded {
         bottom: 85px;
         right: 20px;
         width: 180px;
         padding: 16px;
     }
 
-    .qr-title {
+    .qr-alert-card.expanded .qr-title {
         font-size: 0.85rem;
     }
 
-    .qr-code-wrapper svg {
+    .qr-alert-card.compact .qr-title {
+        font-size: 0.65rem;
+    }
+
+    .qr-alert-card.expanded .qr-code-wrapper svg {
         width: 100px !important;
         height: 100px !important;
+    }
+
+    .qr-alert-card.compact .qr-code-wrapper svg {
+        width: 50px !important;
+        height: 50px !important;
     }
 
     .qr-url {
@@ -199,25 +242,42 @@
         font-size: 1.2rem;
     }
 
-    .qr-alert-card {
+    .qr-alert-card.compact {
+        bottom: 80px;
+        right: 15px;
+        width: 80px;
+        padding: 8px;
+    }
+
+    .qr-alert-card.expanded {
         bottom: 80px;
         right: 15px;
         width: 160px;
         padding: 14px;
     }
 
-    .qr-title {
+    .qr-alert-card.expanded .qr-title {
         font-size: 0.8rem;
         margin-bottom: 10px;
+    }
+
+    .qr-alert-card.compact .qr-title {
+        font-size: 0.6rem;
+        margin-bottom: 6px;
     }
 
     .qr-code-wrapper {
         padding: 6px;
     }
 
-    .qr-code-wrapper svg {
+    .qr-alert-card.expanded .qr-code-wrapper svg {
         width: 90px !important;
         height: 90px !important;
+    }
+
+    .qr-alert-card.compact .qr-code-wrapper svg {
+        width: 45px !important;
+        height: 45px !important;
     }
 
     .qr-url {
