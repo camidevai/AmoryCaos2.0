@@ -2,8 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FaCheckCircle, FaTimesCircle, FaPlay, FaTrophy, FaQrcode } from 'react-icons/fa';
 import { QRCodeSVG } from 'qrcode.react';
-import gameService from '../services/gameService';
-import RealtimeStatus from './RealtimeStatus';
+import gameService from '../services/simpleGameService';
 import './AIExplanation.css';
 
 const AIExplanation = () => {
@@ -53,18 +52,17 @@ const AIExplanation = () => {
     ];
 
     useEffect(() => {
-        // Initialize game service with Supabase
-        gameService.init();
-
         // Subscribe to game state changes
         const unsubscribe = gameService.subscribe((newState) => {
             console.log('🔄 Component received state update:', newState);
             setGameState(newState);
         });
 
+        // Get initial state
+        setGameState(gameService.getState());
+
         return () => {
             unsubscribe();
-            // Don't cleanup Supabase connection here as other components might use it
         };
     }, []);
 
@@ -118,7 +116,6 @@ const AIExplanation = () => {
     if (isVoteMode) {
         return (
             <section className="ai-explanation-section section vote-mode">
-                <RealtimeStatus gameState={gameState} />
                 <div className="container">
                     <motion.div
                         className="vote-container"
@@ -185,37 +182,19 @@ const AIExplanation = () => {
                         {gameState.gameState === 'results' && currentQuestion && (
                             <div className="results-view">
                                 <h3 className="question-text">{currentQuestion.question}</h3>
-
-                                {hasVoted ? (
-                                    <>
-                                        <div className="answer-reveal">
-                                            {currentQuestion.explanation}
-                                        </div>
-                                        <div className="vote-stats">
-                                            <div className="stat-bar">
-                                                <div className="stat-label">✅ Verdadero: {percentages.true}%</div>
-                                                <div className="stat-bar-fill" style={{ width: `${percentages.true}%` }}></div>
-                                            </div>
-                                            <div className="stat-bar">
-                                                <div className="stat-label">❌ Falso: {percentages.false}%</div>
-                                                <div className="stat-bar-fill stat-bar-false" style={{ width: `${percentages.false}%` }}></div>
-                                            </div>
-                                        </div>
-                                    </>
-                                ) : (
-                                    <div className="too-late-message">
-                                        <p className="too-late-icon">⏰</p>
-                                        <p className="too-late-text">
-                                            ¡Llegaste un poco tarde!
-                                        </p>
-                                        <p className="too-late-subtitle">
-                                            Esta pregunta ya fue respondida. Espera a la siguiente pregunta para participar.
-                                        </p>
-                                        <div className="answer-reveal">
-                                            {currentQuestion.explanation}
-                                        </div>
+                                <div className="answer-reveal">
+                                    {currentQuestion.explanation}
+                                </div>
+                                <div className="vote-stats">
+                                    <div className="stat-bar">
+                                        <div className="stat-label">✅ Verdadero: {percentages.true}%</div>
+                                        <div className="stat-bar-fill" style={{ width: `${percentages.true}%` }}></div>
                                     </div>
-                                )}
+                                    <div className="stat-bar">
+                                        <div className="stat-label">❌ Falso: {percentages.false}%</div>
+                                        <div className="stat-bar-fill stat-bar-false" style={{ width: `${percentages.false}%` }}></div>
+                                    </div>
+                                </div>
                             </div>
                         )}
                     </motion.div>
