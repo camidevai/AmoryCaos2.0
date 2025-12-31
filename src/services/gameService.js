@@ -175,40 +175,62 @@ class GameService {
 
     // Submit a vote with duplicate prevention
     async vote(answer) {
-        if (this.gameState !== 'voting') return false;
+        console.log('🗳️ Vote attempt:', { answer, gameState: this.gameState, question: this.currentQuestion });
+
+        if (this.gameState !== 'voting') {
+            console.log('❌ Cannot vote: game is not in voting phase');
+            return false;
+        }
 
         // Check if user already voted for this question
         const voteKey = `voted_q${this.currentQuestion}`;
         const hasVoted = localStorage.getItem(voteKey);
 
         if (hasVoted) {
-            console.log('User already voted for this question');
+            console.log('❌ User already voted for this question');
             return false;
         }
 
-        // Use Supabase RPC for atomic increment to prevent race conditions
-        const key = answer.toString();
-        const { data, error } = await supabase.rpc('increment_vote', {
-            game_id: this.gameId,
-            vote_key: key,
-            increment_by: 1
-        });
+        try {
+            // Load current state to get latest votes
+            await this.loadGameState();
 
-        if (error) {
-            console.error('Error voting:', error);
-            // Fallback to manual increment if RPC fails
-            await this.loadGameState(); // Reload to get latest state
+            // Increment the vote count
+            const key = answer.toString();
             this.votes[key] = (this.votes[key] || 0) + 1;
-            await this.saveGameState();
+
+            console.log('📊 Updated votes:', this.votes);
+
+            // Save to Supabase
+            const { data, error } = await supabase
+                .from('game_state')
+                .update({
+                    votes: this.votes,
+                    updated_at: new Date().toISOString()
+                })
+                .eq('id', this.gameId)
+                .select();
+
+            if (error) {
+                console.error('❌ Error saving vote to Supabase:', error);
+                // Revert the vote increment
+                this.votes[key] = (this.votes[key] || 1) - 1;
+                return false;
+            }
+
+            console.log('✅ Vote saved successfully:', data);
+
+            // Only mark as voted if save was successful
+            localStorage.setItem(voteKey, 'true');
+
+            // Notify listeners
+            this.notify();
+            return true;
+
+        } catch (error) {
+            console.error('❌ Exception during vote:', error);
+            return false;
         }
-
-        // Mark this question as voted
-        localStorage.setItem(voteKey, 'true');
-
-        // Reload state to get updated votes
-        await this.loadGameState();
-        this.notify();
-        return true;
     }
 
     // Show results

@@ -98,14 +98,16 @@ const AIExplanation = () => {
     };
 
     const handleVote = async (answer) => {
+        console.log('🗳️ User clicked vote button:', answer);
+
         const success = await gameService.vote(answer);
+
         if (success) {
+            console.log('✅ Vote successful, updating UI');
             setHasVoted(true);
-            // Show feedback
-            alert(answer ? '¡Votaste VERDADERO! ✅' : '¡Votaste FALSO! ❌');
         } else {
-            // User already voted
-            alert('⚠️ Ya votaste en esta pregunta');
+            console.log('❌ Vote failed');
+            alert('⚠️ No se pudo registrar tu voto. Por favor intenta de nuevo.');
         }
     };
 
