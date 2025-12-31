@@ -101,6 +101,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">~350 a.C.</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/256px-Aristotle_Altemps_Inv8575.jpg"
+                                                alt="Aristóteles"
+                                            />
+                                        </div>
                                         <h4>🏛️ Aristóteles - El Silogismo</h4>
                                         <p>Hace más de 2000 años, Aristóteles creó el <strong>silogismo</strong>, la primera forma de razonamiento lógico estructurado. Base fundamental del pensamiento computacional.</p>
                                         <p className="timeline-example">Ejemplo: "Todos los humanos son mortales. Sócrates es humano. Por lo tanto, Sócrates es mortal."</p>
@@ -117,6 +123,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1637</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg/256px-Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg"
+                                                alt="René Descartes"
+                                            />
+                                        </div>
                                         <h4>🧮 René Descartes - Método Cartesiano</h4>
                                         <p>Propone el <strong>método científico</strong> y el razonamiento deductivo. "Pienso, luego existo" - la base del pensamiento racional que inspiraría la computación.</p>
                                     </div>
@@ -132,6 +144,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1837</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Charles_Babbage_-_1860.jpg/256px-Charles_Babbage_-_1860.jpg"
+                                                alt="Charles Babbage"
+                                            />
+                                        </div>
                                         <h4>⚙️ Charles Babbage - Máquina Analítica</h4>
                                         <p>Diseña la primera <strong>computadora mecánica programable</strong>. Aunque nunca se construyó completamente, sentó las bases de la computación moderna.</p>
                                     </div>
@@ -147,6 +165,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1843</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/256px-Ada_Lovelace_portrait.jpg"
+                                                alt="Ada Lovelace"
+                                            />
+                                        </div>
                                         <h4>👩‍💻 Ada Lovelace - Primera Programadora</h4>
                                         <p>Crea el <strong>primer algoritmo</strong> destinado a ser procesado por una máquina. Visionó que las computadoras podrían ir más allá de simples cálculos.</p>
                                         <p className="timeline-highlight">💡 "La máquina podría componer música, producir gráficos y ser útil a la ciencia."</p>
@@ -163,6 +187,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1950</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alan_Turing_Aged_16.jpg/256px-Alan_Turing_Aged_16.jpg"
+                                                alt="Alan Turing"
+                                            />
+                                        </div>
                                         <h4>🧠 Alan Turing - Test de Turing</h4>
                                         <p>Héroe de la Segunda Guerra Mundial que descifró códigos nazis. Propone el <strong>"Test de Turing"</strong> para medir si una máquina puede pensar.</p>
                                         <p className="timeline-highlight">❓ "¿Puede una máquina pensar?" - La pregunta que inició todo.</p>
@@ -179,9 +209,37 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1956</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/John_McCarthy_Stanford.jpg/256px-John_McCarthy_Stanford.jpg"
+                                                alt="John McCarthy - Conferencia de Dartmouth"
+                                            />
+                                        </div>
                                         <h4>🎓 Conferencia de Dartmouth</h4>
                                         <p>Nace oficialmente el término <strong>"Inteligencia Artificial"</strong>. John McCarthy, Marvin Minsky y otros visionarios se reúnen con un objetivo: crear máquinas que piensen como humanos.</p>
                                         <p className="timeline-highlight">🎯 El nacimiento oficial de la IA como campo de estudio.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* Invierno de la IA */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.32 }}
+                                >
+                                    <div className="timeline-year">1974-1980</div>
+                                    <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://i.pinimg.com/originals/20/a7/de/20a7deb9f571a103494b5451f49ec392.gif"
+                                                alt="Invierno de la IA"
+                                            />
+                                        </div>
+                                        <h4>❄️ El Invierno de la IA</h4>
+                                        <p>Período de <strong>desilusión y recortes de financiamiento</strong>. Las promesas no cumplidas llevan a la comunidad científica a perder fe en la IA. Un recordatorio de que el progreso no es lineal.</p>
+                                        <p className="timeline-highlight">🥶 La IA casi muere... pero sobrevivió.</p>
                                     </div>
                                 </motion.div>
 
@@ -195,6 +253,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1997</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://media.gettyimages.com/id/1240227320/es/foto/deep-blue-ibm-computer-plays-chess-against-world-champion-garry-kasparov-in-new-york-usa-on.jpg?s=612x612&w=0&k=20&c=rObRl1knE8f_4VO2h_3nc_WzMsUkG8L0n-lvSE8LpFI="
+                                                alt="IBM Deep Blue vs Kasparov"
+                                            />
+                                        </div>
                                         <h4>♟️ IBM Deep Blue vs Kasparov</h4>
                                         <p>La supercomputadora de IBM <strong>Deep Blue</strong> derrota al campeón mundial de ajedrez Garry Kasparov. Primera vez que una máquina vence a un humano en ajedrez.</p>
                                         <p className="timeline-highlight">🏆 La IA demuestra que puede superar a los humanos en tareas complejas.</p>
@@ -211,6 +275,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2011</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://i.makeagif.com/media/5-09-2023/7RWkcy.gif"
+                                                alt="IBM Watson en Jeopardy"
+                                            />
+                                        </div>
                                         <h4>🎮 IBM Watson - Jeopardy!</h4>
                                         <p><strong>Watson</strong> de IBM gana el concurso Jeopardy! contra campeones humanos. Demuestra comprensión del lenguaje natural y razonamiento complejo.</p>
                                     </div>
@@ -226,9 +296,37 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2012</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://tse4.mm.bing.net/th/id/OIP.Jt7FgVwjOMpF9UpHaE1?r=0&cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3"
+                                                alt="Redes Neuronales"
+                                            />
+                                        </div>
                                         <h4>🧬 Revolución de las Redes Neuronales</h4>
                                         <p>Google y otros gigantes tecnológicos empiezan a desarrollar <strong>redes neuronales profundas</strong>. El deep learning cambia el juego completamente.</p>
                                         <p className="timeline-highlight">🔬 Las máquinas empiezan a "aprender" de verdad.</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* AlphaGo */}
+                                <motion.div
+                                    className="timeline-item"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.48 }}
+                                >
+                                    <div className="timeline-year">2016</div>
+                                    <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://i.makeagif.com/media/5-09-2017/qNfoPW.gif"
+                                                alt="AlphaGo vs Lee Sedol"
+                                            />
+                                        </div>
+                                        <h4>🎯 AlphaGo - DeepMind</h4>
+                                        <p><strong>AlphaGo</strong> de Google DeepMind derrota a Lee Sedol, campeón mundial de Go. El Go es infinitamente más complejo que el ajedrez, con más posiciones que átomos en el universo.</p>
+                                        <p className="timeline-highlight">🤯 La IA domina el juego más complejo jamás creado.</p>
                                     </div>
                                 </motion.div>
 
@@ -242,6 +340,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2018</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://miro.medium.com/v2/resize:fit:1400/1*2T1UdGgN_DwqFhFGcbKP5A.png"
+                                                alt="Google BERT"
+                                            />
+                                        </div>
                                         <h4>🔤 Google BERT</h4>
                                         <p>Google lanza <strong>BERT</strong>, revolucionando la comprensión del lenguaje natural. Las búsquedas de Google se vuelven mucho más inteligentes.</p>
                                     </div>
@@ -257,6 +361,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2022</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png"
+                                                alt="ChatGPT"
+                                            />
+                                        </div>
                                         <h4>🚀 ChatGPT - Revolución Generativa</h4>
                                         <p><strong>OpenAI</strong> lanza ChatGPT y cambia todo. La IA generativa se vuelve accesible para todos. 100 millones de usuarios en 2 meses.</p>
                                         <p className="timeline-highlight">💥 El momento que cambió el mundo para siempre.</p>
@@ -273,6 +383,12 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2023-2025</div>
                                     <div className="timeline-content">
+                                        <div className="timeline-image">
+                                            <img
+                                                src="https://cdn.vox-cdn.com/thumbor/Pkmq1nm3skO0-j693JTMd7RL0Zk=/0x0:2012x1341/1200x800/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg"
+                                                alt="Guerra de las IAs"
+                                            />
+                                        </div>
                                         <h4>⚔️ La Guerra de los Gigantes</h4>
                                         <p>Comienza la <strong>batalla por la supremacía de la IA</strong>:</p>
                                         <ul className="timeline-list">
