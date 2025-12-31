@@ -109,9 +109,13 @@
 
 .timeline-item {
     display: flex;
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-2xl);
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
     position: relative;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .timeline-year {
@@ -128,6 +132,7 @@
     color: white;
     box-shadow: 0 5px 20px rgba(92, 136, 252, 0.5);
     z-index: 2;
+    margin: 0 auto var(--spacing-md);
 }
 
 .timeline-content {
@@ -176,6 +181,7 @@
     border: 3px solid rgba(92, 136, 252, 0.4);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    cursor: pointer;
 }
 
 .timeline-image::before {
@@ -1123,5 +1129,95 @@
     .conclusion-highlight {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+/* Modal de Imagen Expandida */
+.image-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: var(--spacing-xl);
+    backdrop-filter: blur(8px);
+}
+
+.image-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: var(--color-dark-secondary);
+    border-radius: 20px;
+    padding: var(--spacing-xl);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(92, 136, 252, 0.5);
+}
+
+.image-modal-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    border: 3px solid var(--color-dark);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10001;
+    box-shadow: 0 4px 15px rgba(92, 136, 252, 0.6);
+}
+
+.image-modal-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 6px 25px rgba(92, 136, 252, 0.8);
+}
+
+.image-modal-img {
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+}
+
+.image-modal-caption {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 0 2px 8px rgba(92, 136, 252, 0.3);
+}
+
+@media (max-width: 768px) {
+    .image-modal-content {
+        max-width: 95vw;
+        padding: var(--spacing-lg);
+    }
+
+    .image-modal-close {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        top: -10px;
+        right: -10px;
+    }
+
+    .image-modal-caption {
+        font-size: 1rem;
     }
 }

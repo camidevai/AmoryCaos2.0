@@ -5,6 +5,15 @@ import './AIExplanation.css';
 
 const AIExplanation = () => {
     const [activeTab, setActiveTab] = useState('historia');
+    const [expandedImage, setExpandedImage] = useState(null);
+
+    const handleImageClick = (imageSrc, imageAlt) => {
+        setExpandedImage({ src: imageSrc, alt: imageAlt });
+    };
+
+    const closeExpandedImage = () => {
+        setExpandedImage(null);
+    };
 
     return (
         <section className="ai-explanation-section section">
@@ -101,7 +110,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">~350 a.C.</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/256px-Aristotle_Altemps_Inv8575.jpg",
+                                                "Aristóteles - Filósofo griego, creador del silogismo"
+                                            )}
+                                        >
                                             <img
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/256px-Aristotle_Altemps_Inv8575.jpg"
                                                 alt="Aristóteles"
@@ -123,7 +138,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1637</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg/256px-Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg",
+                                                "René Descartes - Filósofo y matemático francés"
+                                            )}
+                                        >
                                             <img
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg/256px-Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg"
                                                 alt="René Descartes"
@@ -145,7 +166,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1837</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Charles_Babbage_-_1860.jpg/256px-Charles_Babbage_-_1860.jpg",
+                                                "Charles Babbage - Padre de la computación"
+                                            )}
+                                        >
                                             <img
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Charles_Babbage_-_1860.jpg/256px-Charles_Babbage_-_1860.jpg"
                                                 alt="Charles Babbage"
@@ -167,7 +194,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1843</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/256px-Ada_Lovelace_portrait.jpg",
+                                                "Ada Lovelace - Primera programadora de la historia"
+                                            )}
+                                        >
                                             <img
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/256px-Ada_Lovelace_portrait.jpg"
                                                 alt="Ada Lovelace"
@@ -189,7 +222,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1950</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alan_Turing_Aged_16.jpg/256px-Alan_Turing_Aged_16.jpg",
+                                                "Alan Turing - Padre de la Inteligencia Artificial"
+                                            )}
+                                        >
                                             <img
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alan_Turing_Aged_16.jpg/256px-Alan_Turing_Aged_16.jpg"
                                                 alt="Alan Turing"
@@ -211,7 +250,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1956</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/John_McCarthy_Stanford.jpg/256px-John_McCarthy_Stanford.jpg",
+                                                "John McCarthy - Fundador de la Conferencia de Dartmouth"
+                                            )}
+                                        >
                                             <img
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/John_McCarthy_Stanford.jpg/256px-John_McCarthy_Stanford.jpg"
                                                 alt="John McCarthy - Conferencia de Dartmouth"
@@ -233,7 +278,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1974-1980</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://i.pinimg.com/originals/20/a7/de/20a7deb9f571a103494b5451f49ec392.gif",
+                                                "Invierno de la IA - Período de desilusión (1974-1980)"
+                                            )}
+                                        >
                                             <img
                                                 src="https://i.pinimg.com/originals/20/a7/de/20a7deb9f571a103494b5451f49ec392.gif"
                                                 alt="Invierno de la IA"
@@ -255,7 +306,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">1997</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://media.gettyimages.com/id/1240227320/es/foto/world-chess-champion-garry-kasparov-looks-at-the-chessboard-before-his-next-move-in-the-early.jpg?s=1024x1024&w=gi&k=20&c=rObRl1knE8f_4VO2h_3nc_WzMsUkG8L0n-lvSE8LpFI=",
+                                                "IBM Deep Blue vs Garry Kasparov - 1997"
+                                            )}
+                                        >
                                             <img
                                                 src="https://media.gettyimages.com/id/1240227320/es/foto/world-chess-champion-garry-kasparov-looks-at-the-chessboard-before-his-next-move-in-the-early.jpg?s=1024x1024&w=gi&k=20&c=rObRl1knE8f_4VO2h_3nc_WzMsUkG8L0n-lvSE8LpFI="
                                                 alt="IBM Deep Blue vs Kasparov"
@@ -277,7 +334,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2011</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://i.makeagif.com/media/5-09-2023/7RWkcy.gif",
+                                                "IBM Watson ganando Jeopardy! - 2011"
+                                            )}
+                                        >
                                             <img
                                                 src="https://i.makeagif.com/media/5-09-2023/7RWkcy.gif"
                                                 alt="IBM Watson en Jeopardy"
@@ -298,7 +361,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2012</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://media.licdn.com/dms/image/v2/D4D12AQEhXbZ8JAVmyQ/article-cover_image-shrink_720_1280/B4DZdtVlCAGgAI-/0/1749886065216?e=2147483647&v=beta&t=m4vpCWobf9Z28PIz5XUnfZgLD8r1RbwZYKgBtxgWZ7E",
+                                                "Redes Neuronales - Revolución del Deep Learning (2012)"
+                                            )}
+                                        >
                                             <img
                                                 src="https://media.licdn.com/dms/image/v2/D4D12AQEhXbZ8JAVmyQ/article-cover_image-shrink_720_1280/B4DZdtVlCAGgAI-/0/1749886065216?e=2147483647&v=beta&t=m4vpCWobf9Z28PIz5XUnfZgLD8r1RbwZYKgBtxgWZ7E"
                                                 alt="Redes Neuronales"
@@ -320,7 +389,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2016</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://i.makeagif.com/media/5-09-2017/qNfoPW.gif",
+                                                "AlphaGo vs Lee Sedol - DeepMind (2016)"
+                                            )}
+                                        >
                                             <img
                                                 src="https://i.makeagif.com/media/5-09-2017/qNfoPW.gif"
                                                 alt="AlphaGo vs Lee Sedol"
@@ -342,7 +417,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2018</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Zg_632sMkom7YkSXr5jb3aonse44M7_MCg&s",
+                                                "Google BERT - Comprensión del lenguaje natural (2018)"
+                                            )}
+                                        >
                                             <img
                                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Zg_632sMkom7YkSXr5jb3aonse44M7_MCg&s"
                                                 alt="Google BERT"
@@ -363,7 +444,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2022</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png",
+                                                "ChatGPT - Revolución de la IA Generativa (2022)"
+                                            )}
+                                        >
                                             <img
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png"
                                                 alt="ChatGPT"
@@ -385,7 +472,13 @@ const AIExplanation = () => {
                                 >
                                     <div className="timeline-year">2023-2025</div>
                                     <div className="timeline-content">
-                                        <div className="timeline-image">
+                                        <div
+                                            className="timeline-image"
+                                            onClick={() => handleImageClick(
+                                                "https://cdn.vox-cdn.com/thumbor/Pkmq1nm3skO0-j693JTMd7RL0Zk=/0x0:2012x1341/1200x800/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg",
+                                                "La Guerra de las IAs - OpenAI, Google, Anthropic, Meta, DeepSeek (2023-2025)"
+                                            )}
+                                        >
                                             <img
                                                 src="https://cdn.vox-cdn.com/thumbor/Pkmq1nm3skO0-j693JTMd7RL0Zk=/0x0:2012x1341/1200x800/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg"
                                                 alt="Guerra de las IAs"
@@ -941,6 +1034,38 @@ const AIExplanation = () => {
                     </div>
                 </motion.div>
             </div>
+
+            {/* Modal de Imagen Expandida */}
+            <AnimatePresence>
+                {expandedImage && (
+                    <motion.div
+                        className="image-modal-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={closeExpandedImage}
+                    >
+                        <motion.div
+                            className="image-modal-content"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button className="image-modal-close" onClick={closeExpandedImage}>
+                                ✕
+                            </button>
+                            <img
+                                src={expandedImage.src}
+                                alt={expandedImage.alt}
+                                className="image-modal-img"
+                            />
+                            <p className="image-modal-caption">{expandedImage.alt}</p>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };
