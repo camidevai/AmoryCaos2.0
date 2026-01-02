@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FaBrain, FaCompass, FaLightbulb, FaRobot, FaExclamationTriangle } from 'react-icons/fa';
 import './AIExplanation.css';
@@ -108,7 +108,7 @@ const AIExplanation = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.05 }}
                                 >
-                                    <div className="timeline-year">~350 a.C.</div>
+                                    <div className="timeline-year" style={{ whiteSpace: 'nowrap' }}>~350 a.C.</div>
                                     <div className="timeline-content">
                                         <div
                                             className="timeline-image"
@@ -276,7 +276,7 @@ const AIExplanation = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.32 }}
                                 >
-                                    <div className="timeline-year">1974-1980</div>
+                                    <div className="timeline-year" style={{ whiteSpace: 'nowrap' }}>1974-1980</div>
                                     <div className="timeline-content">
                                         <div
                                             className="timeline-image"
@@ -470,7 +470,7 @@ const AIExplanation = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.6 }}
                                 >
-                                    <div className="timeline-year">2023-2025</div>
+                                    <div className="timeline-year" style={{ whiteSpace: 'nowrap' }}>2023-2025</div>
                                     <div className="timeline-content">
                                         <div
                                             className="timeline-image"
