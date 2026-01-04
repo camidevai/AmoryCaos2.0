@@ -1238,8 +1238,8 @@
 .llm-circle-container {
     position: relative;
     width: 100%;
-    max-width: 800px;
-    height: 800px;
+    max-width: 900px;
+    height: 900px;
     margin: var(--spacing-3xl) auto;
     display: flex;
     align-items: center;
@@ -1249,8 +1249,8 @@
 /* Círculo de fondo animado */
 .llm-circle-bg {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
     border: 3px dashed rgba(92, 136, 252, 0.3);
     top: 50%;
@@ -1377,33 +1377,36 @@
     line-height: 1.3;
 }
 
-/* Posiciones de los pasos en el círculo */
+/* Posiciones de los pasos en el círculo (distribuidos uniformemente) */
+/* Paso 1: Top (0°) */
 .llm-step-1 {
-    top: 0;
+    top: 2%;
     left: 50%;
     transform: translateX(-50%);
 }
 
+/* Paso 2: Top Right (72°) */
 .llm-step-2 {
-    top: 15%;
-    right: 10%;
+    top: 18%;
+    right: 15%;
 }
 
+/* Paso 3: Bottom Right (144°) */
 .llm-step-3 {
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+    bottom: 18%;
+    right: 15%;
 }
 
+/* Paso 4: Bottom Left (216°) */
 .llm-step-4 {
-    bottom: 15%;
-    right: 10%;
+    bottom: 18%;
+    left: 15%;
 }
 
+/* Paso 5: Top Left (288°) */
 .llm-step-5 {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 18%;
+    left: 15%;
 }
 
 /* SVG Arrows */
