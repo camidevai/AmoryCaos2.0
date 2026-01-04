@@ -1469,75 +1469,19 @@
 
 @media (max-width: 768px) {
     .llm-circle-container {
-        height: 600px;
-        max-width: 600px;
-    }
-
-    .llm-circle-bg {
-        width: 350px;
-        height: 350px;
-    }
-
-    .llm-center {
-        width: 140px;
-        height: 140px;
-    }
-
-    .llm-center-icon {
-        font-size: 2.5rem;
-    }
-
-    .llm-center h4 {
-        font-size: 1.2rem;
-    }
-
-    .llm-center p {
-        font-size: 0.85rem;
-    }
-
-    .llm-circle-step {
-        width: 100px;
-        height: 100px;
-    }
-
-    .llm-circle-step .step-number {
-        width: 28px;
-        height: 28px;
-        font-size: 1rem;
-    }
-
-    .llm-circle-step .step-icon {
-        font-size: 1.8rem;
-    }
-
-    .llm-circle-step h4 {
-        font-size: 0.9rem;
-    }
-
-    .llm-circle-step p {
-        font-size: 0.7rem;
-    }
-
-    .neuron-center {
-        width: 15px;
-        height: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .llm-circle-container {
-        height: 500px;
+        height: 550px;
         max-width: 100%;
+        padding: 0 var(--spacing-md);
     }
 
     .llm-circle-bg {
-        width: 280px;
-        height: 280px;
+        width: 320px;
+        height: 320px;
     }
 
     .llm-center {
-        width: 110px;
-        height: 110px;
+        width: 120px;
+        height: 120px;
     }
 
     .llm-center-icon {
@@ -1553,8 +1497,8 @@
     }
 
     .llm-circle-step {
-        width: 80px;
-        height: 80px;
+        width: 85px;
+        height: 85px;
     }
 
     .llm-circle-step .step-number {
@@ -1567,22 +1511,140 @@
 
     .llm-circle-step .step-icon {
         font-size: 1.5rem;
+        margin-bottom: 2px;
     }
 
     .llm-circle-step h4 {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
+        margin-bottom: 2px;
     }
 
     .llm-circle-step p {
-        font-size: 0.6rem;
-    }
-
-    .neural-network-center {
-        gap: 4px;
+        font-size: 0.65rem;
+        line-height: 1.2;
     }
 
     .neuron-center {
         width: 12px;
         height: 12px;
+    }
+
+    /* Ajustar posiciones para móvil */
+    .llm-step-1 {
+        top: 3%;
+    }
+
+    .llm-step-2 {
+        top: 16%;
+        right: 10%;
+    }
+
+    .llm-step-3 {
+        bottom: 16%;
+        right: 10%;
+    }
+
+    .llm-step-4 {
+        bottom: 16%;
+        left: 10%;
+    }
+
+    .llm-step-5 {
+        top: 16%;
+        left: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .llm-circle-container {
+        height: 480px;
+        max-width: 100%;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .llm-circle-bg {
+        width: 260px;
+        height: 260px;
+    }
+
+    .llm-center {
+        width: 100px;
+        height: 100px;
+    }
+
+    .llm-center-icon {
+        font-size: 1.8rem;
+    }
+
+    .llm-center h4 {
+        font-size: 0.9rem;
+    }
+
+    .llm-center p {
+        font-size: 0.7rem;
+    }
+
+    .llm-circle-step {
+        width: 75px;
+        height: 75px;
+        padding: 4px;
+    }
+
+    .llm-circle-step .step-number {
+        width: 22px;
+        height: 22px;
+        font-size: 0.75rem;
+        top: -6px;
+        right: -6px;
+    }
+
+    .llm-circle-step .step-icon {
+        font-size: 1.3rem;
+        margin-bottom: 2px;
+    }
+
+    .llm-circle-step h4 {
+        font-size: 0.7rem;
+        margin-bottom: 1px;
+    }
+
+    .llm-circle-step p {
+        font-size: 0.55rem;
+        line-height: 1.1;
+    }
+
+    .neural-network-center {
+        gap: 3px;
+        margin-top: 4px;
+    }
+
+    .neuron-center {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Ajustar posiciones para móviles pequeños */
+    .llm-step-1 {
+        top: 2%;
+    }
+
+    .llm-step-2 {
+        top: 15%;
+        right: 8%;
+    }
+
+    .llm-step-3 {
+        bottom: 15%;
+        right: 8%;
+    }
+
+    .llm-step-4 {
+        bottom: 15%;
+        left: 8%;
+    }
+
+    .llm-step-5 {
+        top: 15%;
+        left: 8%;
     }
 }
