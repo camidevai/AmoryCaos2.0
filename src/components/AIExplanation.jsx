@@ -55,24 +55,6 @@ const AIExplanation = () => {
                         📜 Historia
                     </button>
                     <button
-                        className={`tab-btn ${activeTab === 'tipos' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('tipos')}
-                    >
-                        � Tipos de IA
-                    </button>
-                    <button
-                        className={`tab-btn ${activeTab === 'diferencia' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('diferencia')}
-                    >
-                        ⚙️ IA vs Automatización
-                    </button>
-                    <button
-                        className={`tab-btn ${activeTab === 'funciona' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('funciona')}
-                    >
-                        🗣️ ¿Cómo funciona?
-                    </button>
-                    <button
                         className={`tab-btn ${activeTab === 'herramientas' ? 'active' : ''}`}
                         onClick={() => setActiveTab('herramientas')}
                     >
@@ -512,201 +494,6 @@ const AIExplanation = () => {
                         </motion.div>
                     )}
 
-                    {/* TAB: Tipos de IA */}
-                    {activeTab === 'tipos' && (
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <h3 className="section-title">🧩 Tipos de Inteligencia Artificial</h3>
-                            <p className="section-intro">Tradicional vs Generativa</p>
-
-                            <div className="comparison-grid">
-                                <motion.div
-                                    className="comparison-card traditional"
-                                    whileHover={{ scale: 1.05, y: -10 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <div className="card-icon">🤖</div>
-                                    <h4>IA Tradicional</h4>
-                                    <p className="card-description">Basada en reglas, lógica y decisiones predefinidas</p>
-                                    <div className="card-example">
-                                        <strong>Ejemplo:</strong>
-                                        <p>Un sistema que decide si aprobar o no un préstamo bancario</p>
-                                    </div>
-                                </motion.div>
-
-                                <motion.div
-                                    className="comparison-card generative"
-                                    whileHover={{ scale: 1.05, y: -10 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <div className="card-icon">✨</div>
-                                    <h4>IA Generativa</h4>
-                                    <p className="card-description">Crea contenido: texto, imágenes, videos, música...</p>
-                                    <div className="card-example">
-                                        <strong>Ejemplos:</strong>
-                                        <p>ChatGPT, Midjourney, Suno, Runway</p>
-                                    </div>
-                                </motion.div>
-                            </div>
-
-                            <motion.div
-                                className="highlight-box"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.3 }}
-                            >
-                                <p className="highlight-text">
-                                    👉 "La IA que usamos hoy es <strong>generativa</strong>. No solo responde: <strong>crea</strong>."
-                                </p>
-                            </motion.div>
-                        </motion.div>
-                    )}
-
-                    {/* TAB: IA vs Automatización */}
-                    {activeTab === 'diferencia' && (
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <h3 className="section-title">⚙️ ¿IA o Automatización?</h3>
-                            <p className="section-intro">"Spoiler: No. Y acá te explico por qué."</p>
-
-                            <div className="vs-container">
-                                <motion.div
-                                    className="vs-card automation"
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <div className="vs-icon">💻</div>
-                                    <h4>Automatización</h4>
-                                    <p className="vs-description">Hace tareas repetitivas sin pensar</p>
-                                    <div className="vs-example">
-                                        <p>Ejemplo: Enviar emails al apretar un botón</p>
-                                    </div>
-                                    <div className="vs-analogy">
-                                        <strong>Es como:</strong>
-                                        <p>Tu microondas 🍕</p>
-                                    </div>
-                                </motion.div>
-
-                                <div className="vs-divider">
-                                    <span>VS</span>
-                                </div>
-
-                                <motion.div
-                                    className="vs-card ai"
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <div className="vs-icon">🧠</div>
-                                    <h4>Inteligencia Artificial</h4>
-                                    <p className="vs-description">Aprende, analiza y toma decisiones complejas</p>
-                                    <div className="vs-example">
-                                        <p>Ejemplo: Recomendar contenido personalizado</p>
-                                    </div>
-                                    <div className="vs-analogy">
-                                        <strong>Es como:</strong>
-                                        <p>Un chef que aprende tus gustos y cocina por ti 👨‍🍳</p>
-                                    </div>
-                                </motion.div>
-                            </div>
-                        </motion.div>
-                    )}
-
-                    {/* TAB: ¿Cómo funciona? */}
-                    {activeTab === 'funciona' && (
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <h3 className="section-title">🗣️ ¿Cómo funciona hablar con una IA como ChatGPT?</h3>
-
-                            <div className="process-flow">
-                                <motion.div
-                                    className="process-step"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.1 }}
-                                >
-                                    <div className="step-number">1</div>
-                                    <div className="step-content">
-                                        <h4>💬 Le haces una pregunta (prompt)</h4>
-                                        <p>Escribes tu consulta en lenguaje natural</p>
-                                    </div>
-                                </motion.div>
-
-                                <div className="process-arrow">↓</div>
-
-                                <motion.div
-                                    className="process-step"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.2 }}
-                                >
-                                    <div className="step-number">2</div>
-                                    <div className="step-content">
-                                        <h4>🔄 Conversión a lenguaje de máquina</h4>
-                                        <p>El sistema traduce tu pregunta a un formato que el modelo entiende</p>
-                                    </div>
-                                </motion.div>
-
-                                <div className="process-arrow">↓</div>
-
-                                <motion.div
-                                    className="process-step"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.3 }}
-                                >
-                                    <div className="step-number">3</div>
-                                    <div className="step-content">
-                                        <h4>🧠 Búsqueda y generación</h4>
-                                        <p>La IA busca en su base de datos/pesos y genera una respuesta</p>
-                                    </div>
-                                </motion.div>
-
-                                <div className="process-arrow">↓</div>
-
-                                <motion.div
-                                    className="process-step"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.4 }}
-                                >
-                                    <div className="step-number">4</div>
-                                    <div className="step-content">
-                                        <h4>✨ Respuesta en lenguaje natural</h4>
-                                        <p>Te responde de forma comprensible y conversacional</p>
-                                    </div>
-                                </motion.div>
-                            </div>
-
-                            <motion.div
-                                className="info-box"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5 }}
-                            >
-                                <p className="info-text">
-                                    📍 <strong>Dato interesante:</strong> Tus datos no se van directo a una "nube mágica".
-                                    Hay un proceso de interpretación, predicción y generación de texto según
-                                    <strong> millones de parámetros entrenados</strong>.
-                                </p>
-                            </motion.div>
-                        </motion.div>
-                    )}
-
                     {/* TAB: Herramientas */}
                     {activeTab === 'herramientas' && (
                         <motion.div
@@ -783,6 +570,40 @@ const AIExplanation = () => {
                                     <div className="tool-highlight">
                                         <strong>Lo que más me gusta:</strong>
                                         <p>Más barato que otros como Code Interpreter o Cloud Code</p>
+                                    </div>
+                                </motion.div>
+
+                                <motion.div
+                                    className="tool-card"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    whileHover={{ scale: 1.05, y: -5 }}
+                                    transition={{ delay: 0.5 }}
+                                >
+                                    <div className="tool-icon">🧠</div>
+                                    <h4>Claude Code</h4>
+                                    <p className="tool-purpose">Asistente de programación avanzado de Anthropic</p>
+                                    <div className="tool-highlight">
+                                        <strong>Lo que más me gusta:</strong>
+                                        <p>Excelente para refactorización y explicaciones técnicas detalladas</p>
+                                    </div>
+                                </motion.div>
+
+                                <motion.div
+                                    className="tool-card"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    whileHover={{ scale: 1.05, y: -5 }}
+                                    transition={{ delay: 0.6 }}
+                                >
+                                    <div className="tool-icon">🚀</div>
+                                    <h4>Antigravity</h4>
+                                    <p className="tool-purpose">Plataforma de automatización y workflows con IA</p>
+                                    <div className="tool-highlight">
+                                        <strong>Lo que más me gusta:</strong>
+                                        <p>Automatiza procesos complejos sin necesidad de código</p>
                                     </div>
                                 </motion.div>
                             </div>
