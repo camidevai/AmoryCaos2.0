@@ -55,6 +55,12 @@ const AIExplanation = () => {
                         📜 Historia
                     </button>
                     <button
+                        className={`tab-btn ${activeTab === 'llm' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('llm')}
+                    >
+                        🤖 ¿Cómo funciona un LLM?
+                    </button>
+                    <button
                         className={`tab-btn ${activeTab === 'herramientas' ? 'active' : ''}`}
                         onClick={() => setActiveTab('herramientas')}
                     >
@@ -489,6 +495,217 @@ const AIExplanation = () => {
                             >
                                 <p className="highlight-text">
                                     🎯 <strong>De Aristóteles a ChatGPT:</strong> 2000 años de evolución del pensamiento lógico hasta las máquinas que crean contenido. La IA no es nueva, pero <strong>nunca había sido tan poderosa</strong>.
+                                </p>
+                            </motion.div>
+                        </motion.div>
+                    )}
+
+                    {/* TAB: ¿Cómo funciona un LLM? */}
+                    {activeTab === 'llm' && (
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <h3 className="section-title">🤖 ¿Cómo funciona un LLM?</h3>
+                            <p className="section-intro">El viaje de tu pregunta hasta la respuesta de la IA</p>
+
+                            <div className="llm-flow">
+                                {/* Paso 1: Prompt del Usuario */}
+                                <motion.div
+                                    className="llm-step"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 }}
+                                    whileHover={{ scale: 1.03 }}
+                                >
+                                    <div className="llm-step-number">1</div>
+                                    <div className="llm-step-icon">💬</div>
+                                    <div className="llm-step-content">
+                                        <h4>Escribes tu Prompt</h4>
+                                        <p>Haces una pregunta o solicitud en lenguaje natural</p>
+                                        <div className="llm-example">
+                                            <code>"¿Cómo funciona la fotosíntesis?"</code>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Flecha */}
+                                <motion.div
+                                    className="llm-arrow"
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2 }}
+                                >
+                                    ↓
+                                </motion.div>
+
+                                {/* Paso 2: Tokenización */}
+                                <motion.div
+                                    className="llm-step"
+                                    initial={{ opacity: 0, x: 50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.3 }}
+                                    whileHover={{ scale: 1.03 }}
+                                >
+                                    <div className="llm-step-number">2</div>
+                                    <div className="llm-step-icon">🔤</div>
+                                    <div className="llm-step-content">
+                                        <h4>Tokenización</h4>
+                                        <p>Tu texto se divide en pequeñas unidades llamadas "tokens"</p>
+                                        <div className="llm-example">
+                                            <code>["¿Cómo", " funciona", " la", " foto", "síntesis", "?"]</code>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Flecha */}
+                                <motion.div
+                                    className="llm-arrow"
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.4 }}
+                                >
+                                    ↓
+                                </motion.div>
+
+                                {/* Paso 3: Procesamiento en el LLM */}
+                                <motion.div
+                                    className="llm-step llm-step-highlight"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.5 }}
+                                    whileHover={{ scale: 1.05 }}
+                                >
+                                    <div className="llm-step-number">3</div>
+                                    <div className="llm-step-icon">🧠</div>
+                                    <div className="llm-step-content">
+                                        <h4>Procesamiento en el LLM</h4>
+                                        <p>La "caja negra" donde ocurre la magia</p>
+                                        <div className="llm-blackbox">
+                                            <div className="neural-network">
+                                                <motion.div
+                                                    className="neuron"
+                                                    animate={{
+                                                        scale: [1, 1.2, 1],
+                                                        opacity: [0.5, 1, 0.5],
+                                                    }}
+                                                    transition={{
+                                                        duration: 2,
+                                                        repeat: Infinity,
+                                                        delay: 0,
+                                                    }}
+                                                />
+                                                <motion.div
+                                                    className="neuron"
+                                                    animate={{
+                                                        scale: [1, 1.2, 1],
+                                                        opacity: [0.5, 1, 0.5],
+                                                    }}
+                                                    transition={{
+                                                        duration: 2,
+                                                        repeat: Infinity,
+                                                        delay: 0.3,
+                                                    }}
+                                                />
+                                                <motion.div
+                                                    className="neuron"
+                                                    animate={{
+                                                        scale: [1, 1.2, 1],
+                                                        opacity: [0.5, 1, 0.5],
+                                                    }}
+                                                    transition={{
+                                                        duration: 2,
+                                                        repeat: Infinity,
+                                                        delay: 0.6,
+                                                    }}
+                                                />
+                                            </div>
+                                            <p className="blackbox-text">
+                                                <strong>Billones de parámetros</strong> analizan patrones y contexto
+                                            </p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Flecha */}
+                                <motion.div
+                                    className="llm-arrow"
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.6 }}
+                                >
+                                    ↓
+                                </motion.div>
+
+                                {/* Paso 4: Generación de Tokens */}
+                                <motion.div
+                                    className="llm-step"
+                                    initial={{ opacity: 0, x: -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.7 }}
+                                    whileHover={{ scale: 1.03 }}
+                                >
+                                    <div className="llm-step-number">4</div>
+                                    <div className="llm-step-icon">⚙️</div>
+                                    <div className="llm-step-content">
+                                        <h4>Generación de Tokens</h4>
+                                        <p>El modelo predice el siguiente token más probable, uno por uno</p>
+                                        <div className="llm-example">
+                                            <code>["La", " foto", "síntesis", " es", " el", " proceso", "..."]</code>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Flecha */}
+                                <motion.div
+                                    className="llm-arrow"
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.8 }}
+                                >
+                                    ↓
+                                </motion.div>
+
+                                {/* Paso 5: Respuesta Final */}
+                                <motion.div
+                                    className="llm-step"
+                                    initial={{ opacity: 0, x: 50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.9 }}
+                                    whileHover={{ scale: 1.03 }}
+                                >
+                                    <div className="llm-step-number">5</div>
+                                    <div className="llm-step-icon">✨</div>
+                                    <div className="llm-step-content">
+                                        <h4>Respuesta Final</h4>
+                                        <p>Los tokens se convierten de nuevo en texto legible</p>
+                                        <div className="llm-example llm-response">
+                                            <p>"La fotosíntesis es el proceso mediante el cual las plantas convierten la luz solar en energía química..."</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            {/* Highlight Box Final */}
+                            <motion.div
+                                className="highlight-box"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 1.0 }}
+                            >
+                                <p className="highlight-text">
+                                    💡 <strong>Dato fascinante:</strong> Un LLM como GPT-4 tiene más de <strong>1 billón de parámetros</strong>. Cada vez que escribes un prompt, estos parámetros trabajan juntos para predecir la mejor respuesta posible, token por token. ¡Es como tener un cerebro digital con billones de conexiones! 🧠✨
                                 </p>
                             </motion.div>
                         </motion.div>
