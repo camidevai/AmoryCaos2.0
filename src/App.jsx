@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import Hero from './components/Hero';
 import StoryCarouselCami from './components/StoryCarouselCami';
-import StoryBridge from './components/StoryBridge';
 import StoryCarouselDaniel from './components/StoryCarouselDaniel';
 import AIExplanation from './components/AIExplanation';
 import Resources from './components/Resources';
@@ -40,19 +39,16 @@ function App() {
         {/* Section 2: Historia de Cami */}
         <StoryCarouselCami />
 
-        {/* Section 3: Capítulo Puente */}
+        {/* Section 3: Historia de Daniel */}
         <StoryCarouselDaniel />
 
-        {/* Section 4: Historia de Daniel */}
-        <StoryBridge />
-
-        {/* Section 5: AI Explanation */}
+        {/* Section 4: AI Explanation */}
         <AIExplanation />
 
-        {/* Section 6: Resources */}
+        {/* Section 5: Resources */}
         <Resources onContactClick={handleContactClick} />
 
-        {/* Section 7: Final CTA */}
+        {/* Section 6: Final CTA */}
         <FinalCTA onContactClick={handleContactClick} />
       </main>
 
